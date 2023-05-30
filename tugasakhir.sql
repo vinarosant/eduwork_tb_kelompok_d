@@ -82,9 +82,9 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 (1, 'Kesehatan'),
 (2, 'Olahraga'),
-(4, 'Pendidikan'),
-(5, 'Politik'),
-(9, 'Makanan dan Minuman');
+(3, 'Pendidikan'),
+(4, 'Politik'),
+(5, 'Makanan dan Minuman');
 
 -- --------------------------------------------------------
 
