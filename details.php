@@ -1,34 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ed News</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="assets/css/ticker-style.css">
-
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-</head>
+<?php include "head.html" ?>
 
 <body>
 
@@ -45,93 +18,7 @@
     </div>
     <!-- Preloader Start -->
 
-    <header>
-        <div class="header-area">
-            <div class="main-header ">
-                <div class="header-top black-bg d-none d-md-block">
-                    <div class="container">
-                        <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left">
-                                    <ul>
-                                        <!-- <li><img src="assets/img/icon/header_icon1.png" alt="">34ºc, Sunny </li> -->
-                                        <!-- <li><img src="assets/img/icon/header_icon1.png" alt=""><?php echo date('l, jS F, Y'); ?></li> -->
-                                    </ul>
-                                </div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-mid d-none d-md-block">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="logo">
-                                    <a href="index.html">
-                                        <h1>Ed <strong style="color: red;">News</strong></h1>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 col-md-9">
-                                <div class="header-banner f-right ">
-                                    <img src="assets/img/hero/header_card.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-bottom header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
-                                <!-- sticky -->
-                                <div class="sticky-logo">
-                                    <a href="index.html">
-                                        <h1>Ed <strong style="color: red;">News</strong></h1>
-                                    </a>
-                                </div>
-                                <!-- Main-menu -->
-                                <div class="main-menu d-none d-md-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-4">
-                                <div class="header-right-btn f-right d-none d-lg-block">
-                                    <i class="fas fa-search special-tag"></i>
-                                    <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-md-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include "header.php" ?>
 
     <main>
         <!-- About US Start -->
@@ -245,53 +132,63 @@
                             </div>
                         </div>
                         <!-- From -->
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <form class="form-contact contact_form mb-80" action="contact_process.php" method="post"
-                                    id="contactForm" novalidate="novalidate">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <textarea class="form-control w-100 error" name="message" id="message"
-                                                    cols="30" rows="9" onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = 'Enter Message'"
-                                                    placeholder="Enter Message"></textarea>
-                                            </div>
+                        <div class="comments-area">
+                            <h4>05 Comments</h4>
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="assets/img/comment/comment_1.png" alt="">
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control error" name="name" id="name" type="text"
-                                                    onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = 'Enter your name'"
-                                                    placeholder="Enter your name">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control error" name="email" id="email" type="email"
-                                                    onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = 'Enter email address'"
-                                                    placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <input class="form-control error" name="subject" id="subject"
-                                                    type="text" onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = 'Enter Subject'"
-                                                    placeholder="Enter Subject">
+                                        <div class="desc">
+                                            <p class="comment">
+                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
+                                                Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+                                            </p>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <h5>
+                                                        <a href="#">Emilly Blunt</a>
+                                                    </h5>
+                                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                                </div>
+                                                <div class="reply-btn">
+                                                    <a href="#" class="btn-reply text-uppercase">reply</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                </div>
+                            </div>
+
+                            <div class="comment-form">
+                                <h4>Leave a Reply</h4>
+                                <form class="form-contact comment_form" action="#" id="commentForm">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <!-- Section Tittle -->
                         <div class="section-tittle mb-40">
                             <h3>Follow Us</h3>
                         </div>
@@ -340,6 +237,47 @@
                         <div class="news-poster d-none d-lg-block">
                             <img src="assets/img/news/news_card.jpg" alt="">
                         </div>
+                        <div class="blog_right_sidebar mt-50">
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">Related News</h3>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_1.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>From life was you fish...</h3>
+                                        </a>
+                                        <p>January 12, 2019</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_2.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>The Amazing Hubble</h3>
+                                        </a>
+                                        <p>02 Hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_3.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>Astronomy Or Astrology</h3>
+                                        </a>
+                                        <p>03 Hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_4.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>Asteroids telescope</h3>
+                                        </a>
+                                        <p>01 Hours ago</p>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -347,70 +285,7 @@
         <!-- About US End -->
     </main>
 
-    <footer>
-        <!-- Footer Start-->
-        <div class="footer-area footer-padding fix">
-            <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-5 col-lg-5 col-md-7 col-sm-12">
-                        <div class="single-footer-caption">
-                            <div class="single-footer-caption">
-                                <!-- logo -->
-                                <div class="footer-logo">
-                                    <a href="index.html"><img src="" alt="logo"></a>
-                                </div>
-                                <div class="footer-tittle">
-                                    <div class="footer-pera">
-                                        <p class="text-justify">Selamat datang di situs berita kami yang menyajikan
-                                            informasi terkini dan terpercaya seputar berita terbaru dari berbagai
-                                            bidang. Kami berkomitmen untuk memberikan Anda berita terkini, faktual, dan
-                                            bermanfaat. Dapatkan informasi terbaru mengenai politik, bisnis, hiburan,
-                                            olahraga, dan banyak lagi. Segera kunjungi situs kami untuk mendapatkan
-                                            berita terkini yang akan memperkaya pengetahuan Anda.</p>
-                                    </div>
-                                </div>
-                                <!-- social -->
-                                <div class="footer-social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer-bottom aera -->
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex align-items-center justify-content-between">
-                        <div class="col-lg-6">
-                            <div class="footer-copy-right">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
-                                    <script>
-                                        document.write(new Date().getFullYear());
-                                    </script> All rights reserved | Created By. Kelompok D
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="footer-menu f-right">
-                                <ul>
-                                    <li><a href="#">Terms of use</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End-->
-    </footer>
+    <?php include "footer.html" ?>
 
     <!-- JS here -->
 
