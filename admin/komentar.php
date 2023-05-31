@@ -1,13 +1,13 @@
 <?php
 include 'koneksi.php';
 $halaman = "Data Komentar";
-if (isset($_POST['SimpanBentuk'])) {
+if (isset($_POST['SimpanKomentar'])) {
   $id_bentuk = $_POST['id_bentuk'];
   $bentuk_obat = $_POST['bentuk_obat'];
   mysqli_query($koneksi, "INSERT INTO bentuk VALUES('$id_bentuk','$bentuk_obat')");
   header("location:bentuk.php?pesan=input");
 }
-if (isset($_POST['EditBentuk'])) {
+if (isset($_POST['EditKomentar'])) {
   $id_bentuk = $_POST['id_bentuk'];
   $bentuk_obat = $_POST['bentuk_obat'];
 
