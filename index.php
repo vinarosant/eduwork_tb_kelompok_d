@@ -670,10 +670,6 @@
         </div>
     </div>           
     <!-- End Weekly-News -->
-<<<<<<< HEAD
-=======
-
->>>>>>> dandi
     <!--  Recent Articles start -->
     <div class="recent-articles">
         <div class="container">
