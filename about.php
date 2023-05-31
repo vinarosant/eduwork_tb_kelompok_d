@@ -57,7 +57,8 @@
                                             <p class="about-pera1 mb-25">ED NEWS adalah media digital terpopuler dan terbesar di Indonesia dengan konsep breaking news yang menyajikan informasi peristiwa terkini dan gaya hidup.</p>
                                             <p class="about-pera1 mb-25">Semua berita dapat anda akses di ED NEWS secara cepat dan akurat, mulai dari olahraga sampai pendidikan semua disajikan dalam ED NEWS</p>
                                             <p class="about-pera1 mb-25">
-                                                
+                                            Ed News adalah sebuah platform berita daring yang menyediakan informasi terkini dan terpercaya dalam berbagai kategori topik. Dibangun dengan tujuan untuk memberikan wawasan mendalam dan beragam kepada para pembaca, Ed News menyajikan berita-berita terbaru yang relevan, menarik, dan dapat diandalkan.
+                                            Kami mengerti bahwa kebutuhan informasi setiap individu berbeda-beda. Oleh karena itu, Ed News menawarkan berbagai kategori topik yang luas, mencakup berbagai bidang dan minat, sehingga setiap pembaca dapat menemukan berita yang sesuai dengan minat dan kebutuhan mereka.
                                             </p>
                                         </div>
                                     </div>
