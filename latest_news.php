@@ -3,7 +3,7 @@
 <?php include "head.html" ?>
    <body>
 
-   <?php include "header.html" ?>
+   <?php include "header.php" ?>
 
     <main>
         <!-- Start Youtube -->
