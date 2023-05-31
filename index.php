@@ -45,10 +45,17 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img">
+<<<<<<< HEAD
                                 <img src="assets/img/trending/tiketbola.jpg" alt="">
                                 <div class="trend-top-cap">
                                     <span>Trending</span>
                                     <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket : <br> Timnas Indonesia Vs Argentina</a></h2>
+=======
+                                <img src="assets/img/news/tiketbola.jpg" alt="">
+                                <div class="trend-top-cap">
+                                    <span>Trending</span>
+                                    <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket :<br> Timnas Indonesia Vs Argentina</a></h2>
+>>>>>>> dandi
                                 </div>
                             </div>
                         </div>
@@ -99,8 +106,8 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">Concert</span>
-                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
+                                <h4><a href="details.php">Link Beli Tiket Konser Coldplay, Harga, dan Tips Biar Dapat</a></h4>
+                            </div> 
                         </div>
                         <div class="trand-right-single d-flex">
                             <div class="trand-right-img">
@@ -672,6 +679,10 @@
         </div>
     </div>           
     <!-- End Weekly-News -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> dandi
     <!--  Recent Articles start -->
     <div class="recent-articles">
         <div class="container">
