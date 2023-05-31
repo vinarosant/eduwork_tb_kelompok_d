@@ -93,10 +93,10 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
+                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="categori.php">Category</a></li>
+                                            <li><a href="about.php">About</a></li>
+                                            <li><a href="latest_news.php">Latest News</a></li>
                                             <li><a href="contact.html">Contact</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
