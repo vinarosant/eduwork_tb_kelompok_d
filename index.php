@@ -45,10 +45,10 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img">
-                                <img src="assets/img/trending/trending_top.jpg" alt="">
+                                <img src="assets/img/trending/tiketbola.jpg" alt="">
                                 <div class="trend-top-cap">
-                                    <span>Appetizers</span>
-                                    <h2><a href="details.php">Welcome To The Best Model Winner<br> Contest At Look of the year</a></h2>
+                                    <span>Trending</span>
+                                    <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket : <br> Timnas Indonesia Vs Argentina</a></h2>
                                 </div>
                             </div>
                         </div>
