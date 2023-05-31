@@ -99,7 +99,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">Concert</span>
-                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
+                                <h4><a href="details.php">Link Beli Tiket Konser Coldplay, Harga, dan Tips Biar Dapat</a></h4>
                             </div>
                         </div>
                         <div class="trand-right-single d-flex">
