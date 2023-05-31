@@ -45,17 +45,10 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img">
-<<<<<<< HEAD
                                 <img src="assets/img/trending/tiketbola.jpg" alt="">
                                 <div class="trend-top-cap">
                                     <span>Trending</span>
                                     <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket : <br> Timnas Indonesia Vs Argentina</a></h2>
-=======
-                                <img src="assets/img/news/tiketbola.jpg" alt="">
-                                <div class="trend-top-cap">
-                                    <span>Trending</span>
-                                    <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket :<br> Timnas Indonesia Vs Argentina</a></h2>
->>>>>>> dandi
                                 </div>
                             </div>
                         </div>
