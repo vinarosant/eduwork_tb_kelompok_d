@@ -2,23 +2,25 @@
 include 'koneksi.php';
 $halaman = "Data Admin";
 if (isset($_POST['SimpanAdmin'])) {
-  $id_admin = $_POST['id_jenis'];
-  $jenis_obat = $_POST['jenis_obat'];
-  mysqli_query($koneksi, "INSERT INTO jenis VALUES('$id_jenis','$jenis_obat')");
-  header("location:jenis.php?pesan=input");
+  $id_admin = $_POST['id_admin'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  mysqli_query($koneksi, "INSERT INTO `admin` VALUES('$id_admin','$username','$password')");
+  header("location:admin.php?pesan=input");
 }
 if (isset($_POST['EditAdmin'])) {
-  $id_jenis = $_POST['id_jenis'];
-  $jenis_obat = $_POST['jenis_obat'];
+  $id_admin = $_POST['id_admin'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-  mysqli_query($koneksi, "UPDATE jenis SET jenis_obat='$jenis_obat' WHERE id_jenis='$id_jenis'");
-  header("location:jenis.php?pesan=edit");
+  mysqli_query($koneksi, "UPDATE `admin` SET username='$username' WHERE id_admin='$id_admin'");
+  header("location:admin.php?pesan=edit");
 }
-if (isset($_GET['id_jenis'])) {
-  $id_jenis = $_GET['id_jenis'];
+if (isset($_GET['id_admin'])) {
+  $id_admin = $_GET['id_admin'];
 
-  mysqli_query($koneksi, "DELETE FROM jenis WHERE id_jenis='$id_jenis'");
-  header("location:jenis.php?pesan=hapus");
+  mysqli_query($koneksi, "DELETE FROM `admin` WHERE id_admin='$id_admin'");
+  header("location:admin.php?pesan=hapus");
 }
 ?>
 <!DOCTYPE html>
@@ -94,7 +96,7 @@ if (isset($_GET['id_jenis'])) {
               ?>
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputjenis"><i class="far fa-plus-square"></i> Tambah Data</a>
+                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputadmin"><i class="far fa-plus-square"></i> Tambah Data</a>
                 </div>
               </div>
               <br>
@@ -118,16 +120,16 @@ if (isset($_GET['id_jenis'])) {
                       <td><?= $d['username']; ?></td>
                       <td><?= $d['password']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editjenis<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deletejenis<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editadmin<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deleteadmin<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 
-                    <div class="modal fade" id="editjenis<?php echo $no; ?>">
+                    <div class="modal fade" id="editadmin<?php echo $no; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Edit Jenis Obat</h4>
+                            <h4 class="modal-title">Edit Data Admin</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -135,23 +137,27 @@ if (isset($_GET['id_jenis'])) {
                           <div class="modal-body">
                             <form method="post" action="#">
                               <?php
-                              $id_jenis = $d['id_jenis'];
-                              $query = "SELECT * FROM jenis WHERE id_jenis='$id_jenis'";
+                              $id_admin = $d['id_admin'];
+                              $query = "SELECT * FROM `admin` WHERE id_admin='$id_admin'";
                               $result = mysqli_query($koneksi, $query);
                               while ($row = mysqli_fetch_assoc($result)) {
                               ?>
                                 <div class="card-body">
                                   <div class="form-group">
-                                    <label for="ID Jenis">No</label>
-                                    <input type="text" class="form-control" id="id_jenis" value="<?= $row['id_jenis']; ?>" name="id_jenis" readonly>
+                                    <label for="ID Admin">No</label>
+                                    <input type="text" class="form-control" id="id_admin" value="<?= $row['id_admin']; ?>" name="id_admin" readonly>
                                   </div>
                                   <div class="form-group">
-                                    <label for="Jenis Obat">Jenis Obat</label>
-                                    <input type="text" class="form-control" id="jenis_obat" value="<?= $row['jenis_obat']; ?>" name="jenis_obat" required>
+                                    <label for="Username">Username</label>
+                                    <input type="text" class="form-control" id="username" value="<?= $row['username']; ?>" name="username" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" id="password" value="<?= $row['password']; ?>" name="password" required>
                                   </div>
                                   <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" name="EditJenis">Simpan</button>
+                                    <button type="submit" class="btn btn-primary" name="EditAdmin">Simpan</button>
                                   </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -165,21 +171,21 @@ if (isset($_GET['id_jenis'])) {
                     </div>
                     <!-- /.modal -->
 
-                    <div class="modal fade" id="deletejenis<?php echo $no; ?>">
+                    <div class="modal fade" id="deleteadmin<?php echo $no; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Delete Data Jenis</h4>
+                            <h4 class="modal-title">Delete Data Admin</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            <h4 align="center">Apakah anda yakin ingin menghapus jenis obat <strong><?php echo $d['jenis_obat']; ?></strong>?</h4>
+                            <h4 align="center">Apakah anda yakin ingin menghapus admin dengan username <strong><?php echo $d['username']; ?></strong>?</h4>
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button id="nodelete" type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
-                            <a href="jenis.php?id_jenis=<?php echo $d['id_jenis']; ?>" class="btn btn-primary">Delete</a>
+                            <a href="admin.php?id_admin=<?php echo $d['id_admin']; ?>" class="btn btn-primary">Delete</a>
                           </div>
                         </div>
                         <!-- /.modal-content -->
@@ -205,11 +211,11 @@ if (isset($_GET['id_jenis'])) {
       </section>
       <!-- /.content -->
     </div>
-    <div class="modal fade" id="inputjenis">
+    <div class="modal fade" id="inputadmin">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Tambah Jenis Obat</h4>
+            <h4 class="modal-title">Tambah Data Admin</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -217,13 +223,17 @@ if (isset($_GET['id_jenis'])) {
           <div class="modal-body">
             <form method="post" action="#">
               <div class="card-body">
-                <div class="form-group">
-                  <label for="Jenis Obat">Jenis Obat</label>
-                  <input type="text" class="form-control" id="jenis_obat" value="<?= $row['jenis_obat']; ?>" name="jenis_obat" required>
-                </div>
+              <div class="form-group">
+                              <label for="Username">Username</label>
+                                    <input type="text" class="form-control" id="username" value="<?= $row['username']; ?>" name="username" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" id="password" value="<?= $row['password']; ?>" name="password" required>
+                                  </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" name="SimpanJenis">Simpan</button>
+                  <button type="submit" class="btn btn-primary" name="SimpanAdmin">Simpan</button>
                 </div>
 
               </div>
