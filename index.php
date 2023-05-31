@@ -48,7 +48,7 @@
                                 <img src="assets/img/trending/trending_top.jpg" alt="">
                                 <div class="trend-top-cap">
                                     <span>Appetizers</span>
-                                    <h2><a href="details.html">Welcome To The Best Model Winner<br> Contest At Look of the year</a></h2>
+                                    <h2><a href="details.php">Welcome To The Best Model Winner<br> Contest At Look of the year</a></h2>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="trend-bottom-cap">
                                         <span class="color1">Lifestyple</span>
-                                        <h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
+                                        <h4><a href="details.php">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
                                     </div>
                                 </div>
                                 </div>
@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color2">Sports</span>
-                                            <h4><h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4></h4>
+                                            <h4><h4><a href="details.php">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color3">Travels</span>
-                                            <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a></h4>
+                                            <h4><a href="details.php"> Welcome To The Best Model Winner Contest</a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">Concert</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
                             </div>
                         </div>
                         <div class="trand-right-single d-flex">
@@ -108,7 +108,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color3">sea beach</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
                             </div>
                         </div>
                         <div class="trand-right-single d-flex">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color2">Bike Show</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
                             </div>
                         </div> 
                         <div class="trand-right-single d-flex">
@@ -126,7 +126,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color4">See beach</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
                             </div>
                         </div>
                         <div class="trand-right-single d-flex">
@@ -135,7 +135,7 @@
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">Skeping</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                                <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
                             </div>
                         </div>
                     </div>
