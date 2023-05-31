@@ -3,19 +3,16 @@
 <?php include "head.html" ?>
 
    <body>
-       
-    <!-- Preloader Start -->
-    <div id="preloader-active">
+   <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
+                    <img src="assets/img/atas.png" alt="">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
 </div>
 <?php include "header.php" ?>
 
@@ -54,10 +51,10 @@
                                             <h3>About ED News</h3>
                                         </div>
                                         <div class="about-prea">
-                                            <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
-                                            <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                            <p class="about-pera1 mb-25">ED NEWS adalah media digital terpopuler dan terbesar di Indonesia dengan konsep breaking news yang menyajikan informasi peristiwa terkini dan gaya hidup.</p>
+                                            <p class="about-pera1 mb-25">Semua berita dapat anda akses di ED NEWS secara cepat dan akurat, mulai dari olahraga sampai pendidikan semua disajikan dalam ED NEWS</p>
                                             <p class="about-pera1 mb-25">
-                                                ED NEWS adalah media digital terpopuler dan terbesar di Indonesia dengan konsep breaking news yang menyajikan informasi peristiwa terkini dan gaya hidup.
+                                                
                                             </p>
                                         </div>
                                     </div>
