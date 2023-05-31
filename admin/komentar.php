@@ -2,23 +2,29 @@
 include 'koneksi.php';
 $halaman = "Data Komentar";
 if (isset($_POST['SimpanKomentar'])) {
-  $id_bentuk = $_POST['id_bentuk'];
-  $bentuk_obat = $_POST['bentuk_obat'];
-  mysqli_query($koneksi, "INSERT INTO bentuk VALUES('$id_bentuk','$bentuk_obat')");
-  header("location:bentuk.php?pesan=input");
+  $id_komentar = $_POST['id_komentar'];
+  $nama_pengirim = $_POST['nama_pengirim'];
+  $komentar = $_POST['komentar'];
+  $tgl_komentar = $_POST['tgl_komentar'];
+  $judul = $_POST['judul'];
+  mysqli_query($koneksi, "INSERT INTO komentar VALUES('$id_komentar','$nama_pengirim','$komentar','$tgl_komentar','$id')");
+  header("location:komentar.php?pesan=input");
 }
 if (isset($_POST['EditKomentar'])) {
-  $id_bentuk = $_POST['id_bentuk'];
-  $bentuk_obat = $_POST['bentuk_obat'];
+  $id_komentar = $_POST['id_komentar'];
+  $nama_pengirim = $_POST['nama_pengirim'];
+  $komentar = $_POST['komentar'];
+  $tgl_komentar = $_POST['tgl_komentar'];
+  $judul = $_POST['judul'];
 
-  mysqli_query($koneksi, "UPDATE bentuk SET bentuk_obat='$bentuk_obat' WHERE id_bentuk='$id_bentuk'");
-  header("location:bentuk.php?pesan=edit");
+  mysqli_query($koneksi, "UPDATE komentar SET nama_pengirim='$nama_pengirim' WHERE id_komentar='$id_komentar'");
+  header("location:komentar.php?pesan=edit");
 }
-if (isset($_GET['id_bentuk'])) {
-  $id_bentuk = $_GET['id_bentuk'];
+if (isset($_GET['id_komentar'])) {
+  $id_komentar = $_GET['id_komentar'];
 
-  mysqli_query($koneksi, "DELETE FROM bentuk WHERE id_bentuk='$id_bentuk'");
-  header("location:bentuk.php?pesan=hapus");
+  mysqli_query($koneksi, "DELETE FROM komentar WHERE id_komentar='$id_komentar'");
+  header("location:komentar.php?pesan=hapus");
 }
 ?>
 <!DOCTYPE html>
@@ -94,7 +100,7 @@ if (isset($_GET['id_bentuk'])) {
               ?>
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputbentuk"><i class="far fa-plus-square"></i> Tambah Data</a>
+                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputkomentar"><i class="far fa-plus-square"></i> Tambah Data</a>
                 </div>
               </div>
               <br>
@@ -123,16 +129,16 @@ if (isset($_GET['id_bentuk'])) {
                       <td><?= $d['komentar']; ?></td>
                       <td><?= $d['tgl_komentar']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editbentuk<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deletebentuk<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editkomentar<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deletekomentar<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 
-                    <div class="modal fade" id="editbentuk<?php echo $no; ?>">
+                    <div class="modal fade" id="editkomentar<?php echo $no; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Edit bentuk Obat</h4>
+                            <h4 class="modal-title">Edit Data Komentar</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -140,23 +146,42 @@ if (isset($_GET['id_bentuk'])) {
                           <div class="modal-body">
                             <form method="post" action="#">
                               <?php
-                              $id_bentuk = $d['id_bentuk'];
-                              $query = "SELECT * FROM bentuk WHERE id_bentuk='$id_bentuk'";
+                              $id_komentar = $d['id_komentar'];
+                              $query = "SELECT * FROM komentar WHERE id_komentar='$id_komentar'";
                               $result = mysqli_query($koneksi, $query);
                               while ($row = mysqli_fetch_assoc($result)) {
                               ?>
                                 <div class="card-body">
                                   <div class="form-group">
-                                    <label for="ID bentuk">No</label>
-                                    <input type="text" class="form-control" id="id_bentuk" value="<?= $row['id_bentuk']; ?>" name="id_bentuk" readonly>
+                                    <label for="ID Komentar">No</label>
+                                    <input type="text" class="form-control" id="id_komentar" value="<?= $row['id_komentar']; ?>" name="id_komentar" readonly>
                                   </div>
                                   <div class="form-group">
-                                    <label for="bentuk Obat">Bentuk Obat</label>
-                                    <input type="text" class="form-control" id="bentuk_obat" value="<?= $row['bentuk_obat']; ?>" name="bentuk_obat" required>
+                                    <label for="Judul">Judul Berita</label>
+                                    <select name="id" class="form-control" required>
+                                    <?php
+                                    $brt = mysqli_query($koneksi,"SELECT * FROM berita");
+                                    while($berita=mysqli_fetch_assoc($brt)){
+                                    ?>
+                                  <option value="<?php echo $berita['id']; ?>" <?php if($row['id']==$jenis['id']){ echo "selected"; } ?> ><?php echo $berita['judul']; ?></option>
+                                  <?php } ?>
+                                  </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Nama Pengirim">Nama Pengirim</label>
+                                    <input type="text" class="form-control" id="nama_pengirim" value="<?= $row['nama_pengirim']; ?>" name="nama_pengirim" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Komentar">Komentar</label>
+                                    <input type="text" class="form-control" id="isi" value="<?= $row['isi']; ?>" name="isi" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Tanggal">Tanggal</label>
+                                    <input type="datetime-local" class="form-control" id="tgl_komentar" value="<?= $row['tgl_komentar']; ?>" name="tgl_komentar" required>
                                   </div>
                                   <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" name="EditBentuk">Simpan</button>
+                                    <button type="submit" class="btn btn-primary" name="EditKomentar">Simpan</button>
 
                                   </div>
                                 </div>
@@ -171,21 +196,21 @@ if (isset($_GET['id_bentuk'])) {
                     </div>
                     <!-- /.modal -->
 
-                    <div class="modal fade" id="deletebentuk<?php echo $no; ?>">
+                    <div class="modal fade" id="deletekomentar<?php echo $no; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Delete Data bentuk</h4>
+                            <h4 class="modal-title">Delete Data Komentar</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            <h4 align="center">Apakah anda yakin ingin menghapus bentuk obat <strong><?php echo $d['bentuk_obat']; ?></strong>?</h4>
+                            <h4 align="center">Apakah anda yakin ingin menghapus komentar pada judul <strong><?php echo $d['judul']; ?></strong>?</h4>
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button id="nodelete" type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
-                            <a href="bentuk.php?id_bentuk=<?php echo $d['id_bentuk']; ?>" class="btn btn-primary">Delete</a>
+                            <a href="komentar.php?id_komentar=<?php echo $d['id_komentar']; ?>" class="btn btn-primary">Delete</a>
                           </div>
                         </div>
                         <!-- /.modal-content -->
@@ -213,11 +238,11 @@ if (isset($_GET['id_bentuk'])) {
       </section>
       <!-- /.content -->
     </div>
-    <div class="modal fade" id="inputbentuk">
+    <div class="modal fade" id="inputkomentar">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Tambah bentuk Obat</h4>
+            <h4 class="modal-title">Tambah Data Komentar</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -225,13 +250,32 @@ if (isset($_GET['id_bentuk'])) {
           <div class="modal-body">
             <form method="post" action="#">
               <div class="card-body">
-                <div class="form-group">
-                  <label for="bentuk Obat">Bentuk Obat</label>
-                  <input type="text" class="form-control" id="bentuk_obat" value="<?= $row['bentuk_obat']; ?>" name="bentuk_obat" required>
-                </div>
+              <div class="form-group">
+                <label for="Judul">Judul Berita</label>
+                <select name="id_berita" class="form-control" required>
+                 <?php
+                 $brt = mysqli_query($koneksi,"SELECT * FROM berita");
+                  while($berita=mysqli_fetch_assoc($brt)){
+                                    ?>
+                                  <option value="<?php echo $berita['id']; ?>" <?php if($row['id']==$berita['id']){ echo "selected"; } ?> ><?php echo $berita['judul']; ?></option>
+                                  <?php } ?>
+                                  </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Nama Pengirim">Nama Pengirim</label>
+                                    <input type="text" class="form-control" id="nama_pengirim" value="<?= $row['nama_pengirim']; ?>" name="nama_pengirim" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Komentar">Komentar</label>
+                                    <input type="text" class="form-control" id="isi" value="<?= $row['isi']; ?>" name="isi" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Tanggal">Tanggal</label>
+                                    <input type="datetime-local" class="form-control" id="tgl_komentar" value="<?= $row['tgl_komentar']; ?>" name="tgl_komentar" required>
+                                  </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" name="SimpanBentuk">Simpan</button>
+                  <button type="submit" class="btn btn-primary" name="SimpanKomentar">Simpan</button>
                 </div>
 
               </div>
