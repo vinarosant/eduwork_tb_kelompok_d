@@ -1,6 +1,6 @@
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
-  <img class="animation__shake" src="../assets/img/logo/logo1.png" alt="AdminLTELogo">
+  <img class="animation__shake" src="../assets/img/atas.png" alt="AdminLTELogo">
 </div>
 
 <!-- Navbar -->
