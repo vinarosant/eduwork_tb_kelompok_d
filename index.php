@@ -16,7 +16,7 @@
     </div> -->
     <!-- Preloader Start -->
 
-    <?php include "header.html" ?>
+    <?php include "header.php" ?>
 
     <main>
     <!-- Trending Area Start -->
