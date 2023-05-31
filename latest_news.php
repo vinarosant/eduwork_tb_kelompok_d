@@ -5,6 +5,17 @@
 
    <?php include "header.php" ?>
 
+   <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/atas.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main>
         <!-- About US Start -->
         <div class="about-area">
@@ -17,9 +28,9 @@
                                 <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                                 <div class="trending-animated">
                                     <ul id="js-news" class="js-hidden">
-                                        <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                        <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                        <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                    <li class="news-item">Syarat dan Ketentuan Beli Tiket Timnas Indonesia Vs Argentina</li>
+                                    <li class="news-item">Kisah Ahmad Munjizun Asal Lombok, dari Peternak hingga Raih Gelar Doktor di AS</li>
+                                    <li class="news-item">Anggota KKB Yotam Bugiangge Pembantai 11 Warga Nduga Ditangkap</li>
                                     </ul>
                                 </div>
                                 

@@ -32,7 +32,7 @@
           <a href="index.php" class="nav-link <?php if ($halaman == "Data Berita") {
                                                 echo "active";
                                               } ?>">
-            <i class="nav-icon fas fa-capsules"></i>
+            <i class="nav-icon fa fa-newspaper"></i>
             <p>
               Data Berita
               <i class="right fas fa-angle-<?php if ($halaman == "Data Berita") {
@@ -48,7 +48,7 @@
           <a href="kategori.php" class="nav-link <?php if ($halaman == "Data Kategori") {
                                                 echo "active";
                                               } ?>">
-            <i class="nav-icon fas fa-capsules"></i>
+            <i class="nav-icon 	fas fa-paper-plane"></i>
             <p>
               Data Kategori
               <i class="right fas fa-angle-<?php if ($halaman == "Data Kategori") {
@@ -63,7 +63,7 @@
           <a href="penulis.php" class="nav-link <?php if ($halaman == "Data Penulis") {
                                                     echo "active";
                                                   } ?>">
-            <i class="nav-icon fas fa-capsules"></i>
+            <i class="nav-icon 	fas fa-user-edit"></i>
             <p>
               Data Penulis
               <i class="right fas fa-angle-<?php if ($halaman == "Data Penulis") {
@@ -79,7 +79,7 @@
           <a href="komentar.php" class="nav-link <?php if ($halaman == "Data Komentar") {
                                                   echo "active";
                                                 } ?>">
-            <i class="nav-icon fas fa-capsules"></i>
+            <i class="nav-icon 	fas fa-comment"></i>
             <p>
               Data Komentar
               <i class="right fas fa-angle-<?php if ($halaman == "Data Komentar") {
@@ -95,7 +95,7 @@
           <a href="admin.php" class="nav-link <?php if ($halaman == "Data Admin") {
                                                   echo "active";
                                                 } ?>">
-            <i class="nav-icon fas fa-capsules"></i>
+            <i class="nav-icon 	fas fa-user-cog"></i>
             <p>
               Data Admin
               <i class="right fas fa-angle-<?php if ($halaman == "Data Admin") {
