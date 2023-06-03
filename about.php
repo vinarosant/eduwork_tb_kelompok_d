@@ -1,7 +1,57 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <?php include "head.html" ?>
+<style>
+  .team {
+  background: white;
+  padding: 60px 0;
+}
 
+.team .member {
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #faf9f9;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team .member .member-img {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 200px; 
+}
+
+.team .member .member-info {
+  padding: 25px 15px;
+}
+
+.team .member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #493c3e;
+}
+
+.team .member .member-info span {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #aaaaaa;
+}
+
+.team .member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 26px;
+  color: #777777;
+}
+
+.team .member:hover .social {
+  opacity: 1;
+}
+</style>
    <body>
        
     <!-- Preloader Start -->
@@ -61,8 +111,71 @@
                                             Kami mengerti bahwa kebutuhan informasi setiap individu berbeda-beda. Oleh karena itu, Ed News menawarkan berbagai kategori topik yang luas, mencakup berbagai bidang dan minat, sehingga setiap pembaca dapat menemukan berita yang sesuai dengan minat dan kebutuhan mereka.
                                             </p>
                                         </div>
-                                    </div>
+                                    
+                                    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+  
+      <H3>Our Hardworking Team</H3>
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 d-flex ms-3 align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Fadlan</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Elvina</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Dandy</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/jeha2.jpg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Feki</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </section><!-- End Team Section -->
+                                      </div>   
                         </div>
+                        
                         <div class="col-lg-4">
                             <!-- Section Tittle -->
                             <div class="section-tittle mb-40">
