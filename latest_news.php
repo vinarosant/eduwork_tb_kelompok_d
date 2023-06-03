@@ -18,10 +18,24 @@
 
     <main>
         <!-- About US Start -->
-    <section class="blog_area section-padding" style="margin-left: 70px;">
+    <section class="blog_area section-padding" style="margin-left: 180px; margin-top:-100px">
         <div class="container">
             <div class="row">
-                <div class="col-lg-11 mb-5 mb-lg-0">
+            <div class="col-lg-12">
+                        <div class="trending-tittle">
+                            <strong>Trending now</strong>
+                            <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                            <div class="trending-animated">
+                                <ul id="js-news" class="js-hidden">
+                                    <li class="news-item">Syarat dan Ketentuan Beli Tiket Timnas Indonesia Vs Argentina</li>
+                                    <li class="news-item">Kisah Ahmad Munjizun Asal Lombok, dari Peternak hingga Raih Gelar Doktor di AS</li>
+                                    <li class="news-item">Anggota KKB Yotam Bugiangge Pembantai 11 Warga Nduga Ditangkap</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <div class="col-lg-10 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
                             <div class="blog_item_img">
