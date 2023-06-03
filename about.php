@@ -95,7 +95,7 @@
                             <!-- Trending Tittle -->
                                     <div class="about-right mb-90">
                                         <div class="about-img">
-                                            <img src="assets/img/post/about_heor.jpg" alt="">
+                                            <img src="assets/img/hero/gb.png" alt="">
                                         </div>
                                         <div class="section-tittle mb-30 pt-30">
                                             <h3>About ED News</h3>
