@@ -2,12 +2,11 @@
 include 'koneksi.php';
 $halaman = "Data Komentar";
 if (isset($_POST['SimpanKomentar'])) {
-  $id_komentar = $_POST['id_komentar'];
   $nama_pengirim = $_POST['nama_pengirim'];
   $komentar = $_POST['komentar'];
   $tgl_komentar = $_POST['tgl_komentar'];
-  $judul = $_POST['judul'];
-  mysqli_query($koneksi, "INSERT INTO komentar VALUES('$id_komentar','$nama_pengirim','$komentar','$tgl_komentar','$id')");
+  $id_berita = $_POST['id_berita'];
+  mysqli_query($koneksi, "INSERT INTO komentar VALUES('','$nama_pengirim','$komentar','$tgl_komentar','$id_berita')");
   header("location:komentar.php?pesan=input");
 }
 if (isset($_POST['EditKomentar'])) {
@@ -15,9 +14,14 @@ if (isset($_POST['EditKomentar'])) {
   $nama_pengirim = $_POST['nama_pengirim'];
   $komentar = $_POST['komentar'];
   $tgl_komentar = $_POST['tgl_komentar'];
-  $judul = $_POST['judul'];
+  $id_berita = $_POST['id_berita'];
 
-  mysqli_query($koneksi, "UPDATE komentar SET nama_pengirim='$nama_pengirim' WHERE id_komentar='$id_komentar'");
+  mysqli_query($koneksi, "UPDATE komentar SET 
+  nama_pengirim='$nama_pengirim',
+  komentar='$komentar',
+  tgl_komentar='$tgl_komentar',
+  id_berita='$id_berita'
+   WHERE id_komentar='$id_komentar'");
   header("location:komentar.php?pesan=edit");
 }
 if (isset($_GET['id_komentar'])) {
@@ -117,6 +121,7 @@ if (isset($_GET['id_komentar'])) {
                 </thead>
                 <tbody>
                   <?php
+                  error_reporting(0);
                   $data = mysqli_query($koneksi, "SELECT * FROM `komentar` 
                   LEFT JOIN berita ON `berita`.`id`=`komentar`.`id_berita`");
                   $no = 1;
@@ -153,27 +158,29 @@ if (isset($_GET['id_komentar'])) {
                               ?>
                                 <div class="card-body">
                                   <div class="form-group">
-                                    <label for="ID Komentar">No</label>
-                                    <input type="text" class="form-control" id="id_komentar" value="<?= $row['id_komentar']; ?>" name="id_komentar" readonly>
+                                    <label for="ID Komentar">ID</label>
+                                    <input type="text" class="form-control" value="<?= $row['id_komentar']; ?>" name="id_komentar" readonly>
                                   </div>
                                   <div class="form-group">
                                     <label for="Judul">Judul Berita</label>
-                                    <select name="id" class="form-control" required>
-                                    <?php
-                                    $brt = mysqli_query($koneksi,"SELECT * FROM berita");
-                                    while($berita=mysqli_fetch_assoc($brt)){
-                                    ?>
-                                  <option value="<?php echo $berita['id']; ?>" <?php if($row['id']==$jenis['id']){ echo "selected"; } ?> ><?php echo $berita['judul']; ?></option>
-                                  <?php } ?>
-                                  </select>
+                                    <select name="id_berita" class="form-control" required>
+                                      <?php
+                                      $brt = mysqli_query($koneksi, "SELECT * FROM berita");
+                                      while ($berita = mysqli_fetch_assoc($brt)) {
+                                      ?>
+                                        <option value="<?php echo $berita['id']; ?>" <?php if ($row['id_berita'] == $berita['id']) {
+                                        echo "selected";
+                                        } ?>><?php echo $berita['judul']; ?></option>
+                                      <?php } ?>
+                                    </select>
                                   </div>
                                   <div class="form-group">
                                     <label for="Nama Pengirim">Nama Pengirim</label>
-                                    <input type="text" class="form-control" id="nama_pengirim" value="<?= $row['nama_pengirim']; ?>" name="nama_pengirim" required>
+                                    <input type="text" class="form-control" value="<?= $row['nama_pengirim']; ?>" name="nama_pengirim" required>
                                   </div>
                                   <div class="form-group">
                                     <label for="Komentar">Komentar</label>
-                                    <input type="text" class="form-control" id="isi" value="<?= $row['isi']; ?>" name="isi" required>
+                                    <input type="text" class="form-control" value="<?= $row['komentar']; ?>" name="komentar" required>
                                   </div>
                                   <div class="form-group">
                                     <label for="Tanggal">Tanggal</label>
@@ -222,12 +229,12 @@ if (isset($_GET['id_komentar'])) {
                   <?php } ?>
                 </tbody>
                 <tfoot>
-                    <th>No</th>
-                    <th>Judul Berita</th>
-                    <th>Nama Pengirim</th>
-                    <th>Komentar</th>
-                    <th>Tanggal</th>
-                    <th>Action</th>
+                  <th>No</th>
+                  <th>Judul Berita</th>
+                  <th>Nama Pengirim</th>
+                  <th>Komentar</th>
+                  <th>Tanggal</th>
+                  <th>Action</th>
                 </tfoot>
               </table>
             </section>
@@ -250,29 +257,29 @@ if (isset($_GET['id_komentar'])) {
           <div class="modal-body">
             <form method="post" action="#">
               <div class="card-body">
-              <div class="form-group">
-                <label for="Judul">Judul Berita</label>
-                <select name="id_berita" class="form-control" required>
-                 <?php
-                 $brt = mysqli_query($koneksi,"SELECT * FROM berita");
-                  while($berita=mysqli_fetch_assoc($brt)){
-                                    ?>
-                                  <option value="<?php echo $berita['id']; ?>" <?php if($row['id']==$berita['id']){ echo "selected"; } ?> ><?php echo $berita['judul']; ?></option>
-                                  <?php } ?>
-                                  </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="Nama Pengirim">Nama Pengirim</label>
-                                    <input type="text" class="form-control" id="nama_pengirim" value="<?= $row['nama_pengirim']; ?>" name="nama_pengirim" required>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="Komentar">Komentar</label>
-                                    <input type="text" class="form-control" id="isi" value="<?= $row['isi']; ?>" name="isi" required>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="Tanggal">Tanggal</label>
-                                    <input type="datetime-local" class="form-control" id="tgl_komentar" value="<?= $row['tgl_komentar']; ?>" name="tgl_komentar" required>
-                                  </div>
+                <div class="form-group">
+                  <label for="Judul">Judul Berita</label>
+                  <select name="id_berita" class="form-control" required>
+                    <?php
+                    $brt = mysqli_query($koneksi, "SELECT * FROM berita");
+                    while ($berita = mysqli_fetch_assoc($brt)) {
+                    ?>
+                      <option value="<?php echo $berita['id']; ?>"><?php echo $berita['judul']; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Nama Pengirim">Nama Pengirim</label>
+                  <input type="text" class="form-control" name="nama_pengirim" required>
+                </div>
+                <div class="form-group">
+                  <label for="Komentar">Komentar</label>
+                  <input type="text" class="form-control" name="komentar" required>
+                </div>
+                <div class="form-group">
+                  <label for="Tanggal">Tanggal</label>
+                  <input type="datetime-local" class="form-control" name="tgl_komentar" required>
+                </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary" name="SimpanKomentar">Simpan</button>

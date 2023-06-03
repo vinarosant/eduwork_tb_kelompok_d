@@ -13,7 +13,7 @@ if (isset($_POST['EditAdmin'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  mysqli_query($koneksi, "UPDATE `admin` SET username='$username' WHERE id_admin='$id_admin'");
+  mysqli_query($koneksi, "UPDATE `admin` SET username='$username', password='$password' WHERE id_admin='$id_admin'");
   header("location:admin.php?pesan=edit");
 }
 if (isset($_GET['id_admin'])) {
@@ -103,10 +103,10 @@ if (isset($_GET['id_admin'])) {
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                  <th>No</th>
-                  <th>Username</th>
-                  <th>Password</th>
-                  <th>Action</th>
+                    <th>No</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,7 +144,7 @@ if (isset($_GET['id_admin'])) {
                               ?>
                                 <div class="card-body">
                                   <div class="form-group">
-                                    <label for="ID Admin">No</label>
+                                    <label for="ID Admin">ID</label>
                                     <input type="text" class="form-control" id="id_admin" value="<?= $row['id_admin']; ?>" name="id_admin" readonly>
                                   </div>
                                   <div class="form-group">
@@ -223,14 +223,14 @@ if (isset($_GET['id_admin'])) {
           <div class="modal-body">
             <form method="post" action="#">
               <div class="card-body">
-              <div class="form-group">
-                              <label for="Username">Username</label>
-                                    <input type="text" class="form-control" id="username" value="<?= $row['username']; ?>" name="username" required>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="password" value="<?= $row['password']; ?>" name="password" required>
-                                  </div>
+                <div class="form-group">
+                  <label for="Username">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                  <label for="Password">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary" name="SimpanAdmin">Simpan</button>

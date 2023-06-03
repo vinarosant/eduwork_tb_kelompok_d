@@ -139,8 +139,8 @@ if (isset($_GET['id_penulis'])) {
                               ?>
                                 <div class="card-body">
                                   <div class="form-group">
-                                    <label for="ID Penulis">No</label>
-                                    <input type="text" class="form-control" id="id_penulis" value="<?= $row['id_penulis']; ?>" name="id_id_penulisgol" readonly>
+                                    <label for="ID Penulis">ID</label>
+                                    <input type="text" class="form-control" id="id_penulis" value="<?= $row['id_penulis']; ?>" name="id_penulis" readonly>
                                   </div>
                                   <div class="form-group">
                                     <label for="nama">Nama Penulis</label>
@@ -215,7 +215,7 @@ if (isset($_GET['id_penulis'])) {
               <div class="card-body">
                 <div class="form-group">
                   <label for="nama">Nama Penulis</label>
-                  <input type="text" class="form-control" id="nama" value="<?= $row['nama']; ?>" name="nama" required>
+                  <input type="text" class="form-control" id="nama" name="nama" required>
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

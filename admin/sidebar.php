@@ -46,8 +46,8 @@
 
         <li class="nav-item">
           <a href="kategori.php" class="nav-link <?php if ($halaman == "Data Kategori") {
-                                                echo "active";
-                                              } ?>">
+                                                    echo "active";
+                                                  } ?>">
             <i class="nav-icon 	fas fa-paper-plane"></i>
             <p>
               Data Kategori
@@ -61,8 +61,8 @@
         </li>
         <li class="nav-item">
           <a href="penulis.php" class="nav-link <?php if ($halaman == "Data Penulis") {
-                                                    echo "active";
-                                                  } ?>">
+                                                  echo "active";
+                                                } ?>">
             <i class="nav-icon 	fas fa-user-edit"></i>
             <p>
               Data Penulis
@@ -77,8 +77,8 @@
 
         <li class="nav-item">
           <a href="komentar.php" class="nav-link <?php if ($halaman == "Data Komentar") {
-                                                  echo "active";
-                                                } ?>">
+                                                    echo "active";
+                                                  } ?>">
             <i class="nav-icon 	fas fa-comment"></i>
             <p>
               Data Komentar
@@ -93,8 +93,8 @@
 
         <li class="nav-item">
           <a href="admin.php" class="nav-link <?php if ($halaman == "Data Admin") {
-                                                  echo "active";
-                                                } ?>">
+                                                echo "active";
+                                              } ?>">
             <i class="nav-icon 	fas fa-user-cog"></i>
             <p>
               Data Admin

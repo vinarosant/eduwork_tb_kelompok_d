@@ -140,7 +140,7 @@ if (isset($_GET['id_kategori'])) {
                               ?>
                                 <div class="card-body">
                                   <div class="form-group">
-                                    <label for="ID Kategori">No</label>
+                                    <label for="ID Kategori">ID</label>
                                     <input type="text" class="form-control" id="id_kategori" value="<?= $row['id_kategori']; ?>" name="id_kategori" readonly>
                                   </div>
                                   <div class="form-group">
@@ -216,7 +216,7 @@ if (isset($_GET['id_kategori'])) {
               <div class="card-body">
                 <div class="form-group">
                   <label for="Kategori">Kategori</label>
-                  <input type="text" class="form-control" id="kategori" value="<?= $row['kategori']; ?>" name="kategori" required>
+                  <input type="text" class="form-control" id="kategori" name="kategori" required>
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

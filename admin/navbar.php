@@ -1,6 +1,6 @@
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
-  <img class="animation__shake" src="../assets/img/atas.png" alt="AdminLTELogo">
+  <img class="animation__shake" src="../assets/img/atas.png" style="width: 100px;">
 </div>
 
 <!-- Navbar -->
@@ -155,7 +155,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button id="nodelete" type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
-        <a href="logout.php" class="btn btn-info">Logout</a>
+        <a href="../index.php" class="btn btn-info">Logout</a>
       </div>
     </div>
     <!-- /.modal-content -->
