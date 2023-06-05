@@ -76,9 +76,7 @@
         <div class="about-area">
             <div class="container">
                     <!-- Hot Aimated News Tittle-->
-
                     <?php include 'trending.php'; ?>
-
                    <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Tittle -->
