@@ -64,7 +64,7 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-12">
                                 <!-- Nav Card -->
                                 <div class="tab-content" id="nav-tabContent">
 
