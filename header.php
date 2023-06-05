@@ -1,3 +1,12 @@
+<style>
+    .login-btn {
+        background-color: transparent !important;
+        border: solid;
+        border-color: azure;
+        padding : 15px 1px;
+
+    }
+</style>
 <header>
     <!-- Header Start -->
     <div class="header-area">
@@ -8,7 +17,6 @@
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="header-info-left">
                                 <ul>
-                                    <li><img src="assets/img/icon/header_icon1.png" alt="">34ºc, Sunny </li>
                                     <li><?php echo date('l, jS F, Y'); ?></li>
                                 </ul>
                             </div>
@@ -21,7 +29,7 @@
                             </div>
                             <div>
                                 <ul>
-                                    <li><a href="#" data-toggle="modal" data-target="#loginModal"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                                    <li><a href="#" class="btn login-btn" data-toggle="modal" data-target="#loginModal"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -63,17 +71,6 @@
                                         <li><a href="latest_news.php">Latest News</a></li>
                                     </ul>
                                 </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2 col-md-4">
-                            <div class="header-right-btn f-right d-none d-lg-block">
-                                <i class="fas fa-search special-tag"></i>
-                                <div class="search-box">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
-
-                                    </form>
-                                </div>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
