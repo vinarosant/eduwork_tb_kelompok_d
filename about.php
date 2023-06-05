@@ -125,7 +125,7 @@
         <div class="col-lg-3 col-md-6 d-flex ms-3 align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/fad.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -138,7 +138,7 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/vin.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -151,7 +151,7 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/dan.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -164,7 +164,7 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/jeha2.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/fek.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
