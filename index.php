@@ -17,6 +17,16 @@
     <!-- Preloader Start -->
 
     <?php include "header.php" ;
+
+$limit = 5;
+if(isset($_GET['p']))
+{
+    $noPage = $_GET['p'];
+}
+else $noPage = 1;
+
+$offset = ($noPage - 1) * $limit;
+
 //Mengambil data berita
 $sqlIndex = "SELECT
 berita.id_berita,
