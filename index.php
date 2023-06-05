@@ -16,8 +16,40 @@
     </div> -->
     <!-- Preloader Start -->
 
-    <?php include "header.php" ?>
+    <?php include "header.php" ;
+//Mengambil data berita
+$sqlIndex = "SELECT
+berita.id_berita,
+berita.judul,
+berita.gambar,
+berita.teks_berita,
+berita.tgl_posting,
+berita.dilihat,
+admin.id_admin,
+admin.nama_lengkap,
+kategori.id_kategori,
+kategori.kategori
+FROM
+admin
+INNER JOIN berita ON admin.id_admin = berita.id_admin
+INNER JOIN kategori ON kategori.id_kategori = berita.id_kategori
+ORDER BY
+berita.tgl_posting DESC
+LIMIT ".$mysqli->real_escape_string($offset).",". $limit;
 
+//data untuk dihitung
+$sql_rec = "SELECT id_berita FROM berita";
+
+$total_rec = $mysqli->query($sql_rec);
+
+//Menghitung data yang diambil
+$total_rec_num = $total_rec->num_rows;
+
+$qryIndex = $mysqli->query($sqlIndex);
+
+//Total semua data
+$total_page = ceil($total_rec_num/$limit);
+?>
     <main>
     <!-- Trending Area Start -->
     <div class="trending-area fix">
