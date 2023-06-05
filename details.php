@@ -106,15 +106,11 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                                                     </h5>
                                                     <p class="date"><?php echo date('l, j F Y, H:i', strtotime($data_comment['komentar'])) ?></p>
                                                 </div>
-                                                <div class="reply-btn">
-                                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="comment-form">
                                 <h4>Leave a Reply</h4>
                                 <form class="form-contact comment_form" action="add_comment.php?id=<?php echo $id_berita; ?>" method="post" id="commentForm">
