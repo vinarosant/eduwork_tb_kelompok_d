@@ -1,21 +1,74 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-<?php include "head.html" ?>
+<?php include "head.html" ;
+include 'admin/koneksi.php'; 
+?>
+<style>
+.p{
+  text-align: justify;
+}
 
+  .team {
+  background: white;
+  padding: 60px 0;
+}
+
+.team .member {
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #faf9f9;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team .member .member-img {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 200px; 
+}
+
+.team .member .member-info {
+  padding: 25px 15px;
+}
+
+.team .member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #493c3e;
+}
+
+.team .member .member-info span {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #aaaaaa;
+}
+
+.team .member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 26px;
+  color: #777777;
+}
+
+.team .member:hover .social {
+  opacity: 1;
+}
+</style>
    <body>
-       
-    <!-- Preloader Start -->
-    <div id="preloader-active">
+   <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
+                    <img src="assets/img/atas.png" alt="">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
 </div>
 <?php include "header.php" ?>
 
@@ -27,92 +80,93 @@
         <div class="about-area">
             <div class="container">
                     <!-- Hot Aimated News Tittle-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="trending-tittle">
-                                <strong>Trending now</strong>
-                                <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                                <div class="trending-animated">
-                                    <ul id="js-news" class="js-hidden">
-                                        <li class="news-item">Syarat dan Ketentuan Beli Tiket Timnas Indonesia Vs Argentina</li>
-                                        <li class="news-item">Kisah Ahmad Munjizun Asal Lombok, dari Peternak hingga Raih Gelar Doktor di AS</li>
-                                        <li class="news-item">Anggota KKB Yotam Bugiangge Pembantai 11 Warga Nduga Ditangkap</li>
-                                    </ul>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+
+                    <?php include 'trending.php'; ?>
+
+                    
                    <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Tittle -->
                                     <div class="about-right mb-90">
                                         <div class="about-img">
-                                            <img src="assets/img/post/about_heor.jpg" alt="">
+                                            <img src="assets/img/hero/gb.png" alt="">
                                         </div>
                                         <div class="section-tittle mb-30 pt-30">
                                             <h3>About ED News</h3>
                                         </div>
                                         <div class="about-prea">
-                                            <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
-                                            <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
-                                            <p class="about-pera1 mb-25">
-                                                ED NEWS adalah media digital terpopuler dan terbesar di Indonesia dengan konsep breaking news yang menyajikan informasi peristiwa terkini dan gaya hidup.
-                                            </p>
+                                            <p class="about-pera1 mb-25 p">
+                                            Ed News adalah sebuah platform berita daring yang menyediakan informasi terkini dan terpercaya dalam berbagai kategori topik. Dibangun dengan tujuan untuk memberikan wawasan mendalam dan beragam kepada para pembaca, Ed News menyajikan berita-berita terbaru yang relevan, menarik, dan dapat diandalkan.
+                                            Kami mengerti bahwa kebutuhan informasi setiap individu berbeda-beda. Oleh karena itu, Ed News menawarkan berbagai kategori topik yang luas, mencakup berbagai bidang dan minat, sehingga setiap pembaca dapat menemukan berita yang sesuai dengan minat dan kebutuhan mereka. <br>
+                                            Tujuannya adalah memberikan layanan kepada para pembaca harian ednews di tempat-tempat yang sulit dijangkau oleh jaringan distribusi ednews. Dengan hadirnya ednews Online, para pembaca harian ednews terutama di Indonesia bagian timur dan di luar negeri dapat menikmati harian ednews hari itu juga, tidak perlu menunggu beberapa hari seperti biasanya  
+                                          </p>
                                         </div>
-                                    </div>
+                                    
+                                    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+  
+      <H3>Our Hardworking Team</H3>
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 d-flex ms-3 align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/fad.jpeg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Fadlan</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/vin.jpeg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Elvina</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/dan.jpeg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Dandy</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="assets/img/team/fek.jpeg" class="img-fluid" alt="">
+              
+            </div>
+            <div class="member-info">
+              <h4>Feki</h4>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </section><!-- End Team Section -->
+                                      </div>   
                         </div>
-                        <div class="col-lg-4">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-40">
-                                <h3>Follow Us</h3>
-                            </div>
-                            <!-- Flow Socail -->
-                            <div class="single-follow mb-45">
-                                <div class="single-box">
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">  
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div> 
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                        <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- New Poster -->
-                            <div class="news-poster d-none d-lg-block">
-                                <img src="assets/img/news/news_card.jpg" alt="">
-                            </div>
-                        </div>
+                        
+                        <?php include "followus.html" ?>
                    </div>
             </div>
         </div>

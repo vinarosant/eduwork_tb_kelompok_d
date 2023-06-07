@@ -1,3 +1,31 @@
+<?php
+include 'admin/koneksi.php';
+
+$id_berita = $_GET['id'];
+
+// Query untuk mengambil data berita berdasarkan ID
+$query_detail_berita = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `penulis` ON `penulis`.`id_penulis` = `berita`.`id_penulis` WHERE `berita`.`id` = '$id_berita'");
+$data_detail_berita = mysqli_fetch_assoc($query_detail_berita);
+
+// Menampilkan informasi detail berita
+$judul_berita = $data_detail_berita['judul'];
+$tanggal_publish = $data_detail_berita['tgl_publish'];
+$gambar_berita = $data_detail_berita['gambar'];
+$isi_berita = $data_detail_berita['isi'];
+$nama_penulis = $data_detail_berita['nama'];
+
+
+$query_comment = mysqli_query($koneksi, "SELECT * FROM `komentar` WHERE `id_berita` = '$id_berita'");
+$data_comment = mysqli_fetch_assoc($query_comment);
+
+
+$query_count_comment = mysqli_query($koneksi, "SELECT COUNT(*) AS jumlah_komentar FROM `komentar` WHERE `id_berita` = '$id_berita'");
+$jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
+?>
+
+
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -11,7 +39,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
+                    <img src="assets/img/atas.png" alt="">
                 </div>
             </div>
         </div>
@@ -24,100 +52,27 @@
         <!-- About US Start -->
         <div class="about-area">
             <div class="container">
-                <!-- Hot Aimated News Tittle-->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="trending-tittle">
-                            <strong>Trending now</strong>
-                            <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <div class="trending-animated">
-                                <ul id="js-news" class="js-hidden">
-                                    <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                    <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                    <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                <?php include 'trending.php' ?>
                 <div class="row">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
-                            <div class="about-img">
-                                <img src="assets/img/trending/trending_top.jpg" alt="">
-                            </div>
                             <div class="section-tittle mb-30 pt-30">
-                                <h3>Here come the moms in space</h3>
+                                <h2><?php echo $judul_berita ?></h2>
                             </div>
-                            <div class="about-prea">
-                                <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like
-                                    pizza crusts. Moms are the ones who make sure things happen—from birth to school
-                                    lunch.</p>
-                                <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like
-                                    pizza crusts. Moms are the ones who make sure things happen—from birth to school
-                                    lunch.</p>
-                                <p class="about-pera1 mb-25">
-                                    My hero when I was a kid was my mom. Same for everyone I knew. Moms are untouchable.
-                                    They’re elegant, smart, beautiful, kind…everything we want to be. At 29 years old,
-                                    my favorite compliment is being told that I look like my mom. Seeing myself in her
-                                    image, like this daughter up top, makes me so proud of how far I’ve come, and so
-                                    thankful for where I come from.
-                                    the refractor telescope uses a convex lens to focus the light on the eyepiece.
-                                    The reflector telescope has a concave lens which means it bends in. It uses mirrors
-                                    to focus the image that you eventually see.
-                                    Collimation is a term for how well tuned the telescope is to give you a good clear
-                                    image of what you are looking at. You want your telescope to have good collimation
-                                    so you are not getting a false image of the celestial body.
-                                    Aperture is a fancy word for how big the lens of your telescope is. But it’s an
-                                    important word because the aperture of the lens is the key to how powerful your
-                                    telescope is. Magnification has nothing to do with it, its all in the aperture.
-                                    Focuser is the housing that keeps the eyepiece of the telescope, or what you will
-                                    look through, in place. The focuser has to be stable and in good repair for you to
-                                    have an image you can rely on.
-                                    Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The
-                                    mount is the actual tripod and the wedge is the device that lets you attach the
-                                    telescope to the mount.
-                                    Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the
-                                    ones who make sure things happen—from birth to school lunch.</p>
+                            <div class="author-date">
+                                <p class=""></p>
+                                </p><?php echo $nama_penulis ?></p>
+                                <p style="color:darkgray;"><?php echo date('l, j F Y, H:i', strtotime($tanggal_publish)) ?></p>
                             </div>
-                            <div class="section-tittle">
-                                <h3>Unordered list style?</h3>
+                            <div class="about-img">
+                                <img src="admin/berita/<?php echo $gambar_berita ?>" alt="">
+                                <hr>
                             </div>
-                            <div class="about-prea">
-                                <p class="about-pera1 mb-25">The refractor telescope uses a convex lens to focus the
-                                    light on the eyepiece.
-                                    The reflector telescope has a concave lens which means it bends in. It uses mirrors
-                                    to focus the image that you eventually see.</p>
-                                <p class="about-pera1 mb-25">Collimation is a term for how well tuned the telescope is
-                                    to give you a good clear image of what you are looking at. You want your telescope
-                                    to have good collimation so you are not getting a false image of the celestial body.
-                                </p>
-                                <p class="about-pera1 mb-25">
-                                    My hero when I was a kid was my mom. Same for everyone I knew. Moms are untouchable.
-                                    They’re elegant, smart, beautiful, kind…everything we want to be. At 29 years old,
-                                    my favorite compliment is being told that I look like my mom. Seeing myself in her
-                                    image, like this daughter up top, makes me so proud of how far I’ve come, and so
-                                    thankful for where I come from.
-                                    the refractor telescope uses a convex lens to focus the light on the eyepiece.
-                                    The reflector telescope has a concave lens which means it bends in. It uses mirrors
-                                    to focus the image that you eventually see.
-                                    Collimation is a term fo
-                                    Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the
-                                    ones who make sure things happen—from birth to school lunch.</p>
-                                <p class="about-pera1 mb-25">
-                                    Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The
-                                    mount is the actual tripod and the wedge is the device that lets you attach the
-                                    telescope to the mount.
-                                    Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the
-                                    ones who make sure things happen—from birth to school lunch.</p>
-                                <p class="about-pera1 mb-25">
-                                    Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The
-                                    mount is the actual tripod and the wedge is the device that lets you attach the
-                                    telescope to the mount.
-                                    Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the
-                                    ones who make sure things happen—from birth to school lunch.</p>
+                            <div class="about-prea mt-3">
+                                <?php
+                                echo "<p class='about-pera1 text-justify mb-25'>" . $isi_berita . "</p>";
+                                ?>
                             </div>
                             <div class="social-share pt-30">
                                 <div class="section-tittle">
@@ -133,37 +88,32 @@
                         </div>
                         <!-- From -->
                         <div class="comments-area">
-                            <h4>05 Comments</h4>
+                            <h4><?php echo $jumlah_komentar['jumlah_komentar'] ?> Comments</h4>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="assets/img/comment/comment_1.png" alt="">
+                                            <img src="assets/img/comment/default_avatar.png" alt="">
                                         </div>
                                         <div class="desc">
                                             <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                                Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+                                                <?php echo $data_comment['komentar'] ?>
                                             </p>
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-flex align-items-center">
                                                     <h5>
-                                                        <a href="#">Emilly Blunt</a>
+                                                        <a href="#"><?php echo ucfirst($data_comment['nama_pengirim']) ?></a>
                                                     </h5>
-                                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                                </div>
-                                                <div class="reply-btn">
-                                                    <a href="#" class="btn-reply text-uppercase">reply</a>
+                                                    <p class="date"><?php echo date('l, j F Y, H:i', strtotime($data_comment['komentar'])) ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="comment-form">
                                 <h4>Leave a Reply</h4>
-                                <form class="form-contact comment_form" action="#" id="commentForm">
+                                <form class="form-contact comment_form" action="add_comment.php?id=<?php echo $id_berita; ?>" method="post" id="commentForm">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">

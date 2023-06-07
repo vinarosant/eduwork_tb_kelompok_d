@@ -11,6 +11,7 @@
     <!-- Sidebar user panel (optional) -->
 
     <!-- SidebarSearch Form -->
+<<<<<<< HEAD
     <div class="form-inline">
       <div class="input-group" data-widget="sidebar-search">
 
@@ -22,6 +23,9 @@
         </div>
       </div>
     </div>
+=======
+
+>>>>>>> a9ec9e130eba4afaf9663eeb6d62ced469158dc0
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
