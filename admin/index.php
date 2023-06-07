@@ -195,18 +195,11 @@ if (isset($_GET['id'])) {
                 <tbody>
                   <?php
                   $data = mysqli_query($koneksi, "SELECT * FROM `berita` 
-<<<<<<< HEAD
-                      LEFT JOIN kategori ON `kategori`.`id_kategori`=`berita`.`id_kategori`
-                      LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`");
-                  $no = 1;
-                  while ($d = mysqli_fetch_array($data)) {
-=======
                   LEFT JOIN kategori ON `kategori`.`id_kategori`=`berita`.`id_kategori`
                   LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`");
                   $no = 1;
                   while ($d = mysqli_fetch_array($data)) {
                     $isi_berita = strlen($d['isi']) > 100 ? substr($d['isi'], 0, 100) . "..." : $d['isi'];
->>>>>>> a9ec9e130eba4afaf9663eeb6d62ced469158dc0
                   ?>
                     <tr>
                       <td><?= $no++; ?></td>
@@ -215,9 +208,6 @@ if (isset($_GET['id'])) {
                       </td>
                       <td><?= $d['judul']; ?></td>
                       <td><?= $d['tgl_publish']; ?></td>
-<<<<<<< HEAD
-                      <td><?= $d['isi']; ?></td>
-=======
                       <td>
                         <span class="content-toggle">
                           <span class="content-preview"><?= $isi_berita; ?></span>
@@ -228,7 +218,6 @@ if (isset($_GET['id'])) {
                           <?php endif; ?>
                         </span>
                       </td>
->>>>>>> a9ec9e130eba4afaf9663eeb6d62ced469158dc0
                       <td><?= $d['kategori']; ?></td>
                       <td><?= $d['nama']; ?></td>
                       <td>
@@ -237,8 +226,6 @@ if (isset($_GET['id'])) {
                       </td>
                     </tr>
 
-<<<<<<< HEAD
-=======
                     <script>
                       var showMoreButtons = document.getElementsByClassName("show-more");
                       Array.prototype.forEach.call(showMoreButtons, function(button) {
@@ -272,7 +259,6 @@ if (isset($_GET['id'])) {
                         });
                       });
                     </script>
->>>>>>> a9ec9e130eba4afaf9663eeb6d62ced469158dc0
                     <div class="modal fade" id="editberita<?php echo $no; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">

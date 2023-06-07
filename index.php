@@ -18,15 +18,10 @@ include 'admin/koneksi.php';
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-    </div> -->
-    <!-- Preloader Start -->
-=======
     </div>
 
->>>>>>> a9ec9e130eba4afaf9663eeb6d62ced469158dc0
     <?php include "header.php" ?>
-    
+
     <main>
         <!-- Trending Area Start -->
         <div class="trending-area fix">
@@ -100,16 +95,6 @@ include 'admin/koneksi.php';
                                     <h4><a href="details.php">Link Beli Tiket Konser Coldplay</a></h4>
                                 </div>
                             </div>
-<<<<<<< HEAD
-                            <div class="trand-right-cap">
-                                <span class="color1">Concert</span>
-                                <h4><a href="details.php">Link Beli Tiket Konser Coldplay</a></h4>
-                            </div> 
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="assets/img/trending/right2.jpg" alt="">
-=======
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
                                     <img src="assets/img/trending/right2.jpg" alt="">
@@ -118,7 +103,6 @@ include 'admin/koneksi.php';
                                     <span class="color3">sea beach</span>
                                     <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
                                 </div>
->>>>>>> a9ec9e130eba4afaf9663eeb6d62ced469158dc0
                             </div>
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
