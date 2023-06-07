@@ -20,13 +20,6 @@
                                     <li><?php echo date('l, jS F, Y'); ?></li>
                                 </ul>
                             </div>
-                            <div class="header-info-right">
-                                <ul class="header-social">
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
                             <div>
                                 <ul>
                                     <li><a href="#" class="btn login-btn" data-toggle="modal" data-target="#loginModal"><i class="fas fa-sign-in-alt"></i> Login</a></li>
