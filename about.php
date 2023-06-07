@@ -1,10 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-<?php include "head.html" ?><?php
-
-include 'admin/koneksi.php';
-
+<?php include "head.html" ;
+include 'admin/koneksi.php'; 
 ?>
+
 <style>
 .p{
   text-align: justify;
