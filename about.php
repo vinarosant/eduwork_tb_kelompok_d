@@ -3,6 +3,7 @@
 <?php include "head.html" ;
 include 'admin/koneksi.php'; 
 ?>
+
 <style>
 .p{
   text-align: justify;
