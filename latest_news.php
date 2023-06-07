@@ -24,13 +24,13 @@ include 'admin/koneksi.php';
 
     <main>
         <!-- About US Start -->
-        <section class="blog_area section-padding" style="margin-left: 180px; margin-top:-100px">
+        <section class="blog_area section-padding" style="margin-left: 300px; margin-top:-100px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <?php include 'trending.php' ?>
                     </div>
-                    <div class="col-lg-10 mb-5 mb-lg-0">
+                    <div class="col-lg-9 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
                         <?php
                         $query = $koneksi->query("SELECT * FROM berita JOIN penulis ON berita.id_penulis = penulis.id_penulis");
