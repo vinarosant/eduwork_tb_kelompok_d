@@ -1,9 +1,13 @@
-<?php include 'admin/koneksi.php'; ?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
-<?php include "head.html" ?>
+<?php include "head.html" ;
+include 'admin/koneksi.php'; 
+?>
 <style>
+.p{
+  text-align: justify;
+}
+
   .team {
   background: white;
   padding: 60px 0;
@@ -76,7 +80,10 @@
         <div class="about-area">
             <div class="container">
                     <!-- Hot Aimated News Tittle-->
+
                     <?php include 'trending.php'; ?>
+
+                    
                    <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Tittle -->
@@ -88,12 +95,11 @@
                                             <h3>About ED News</h3>
                                         </div>
                                         <div class="about-prea">
-                                            <p class="about-pera1 mb-25">ED NEWS adalah media digital terpopuler dan terbesar di Indonesia dengan konsep breaking news yang menyajikan informasi peristiwa terkini dan gaya hidup.</p>
-                                            <p class="about-pera1 mb-25">Semua berita dapat anda akses di ED NEWS secara cepat dan akurat, mulai dari olahraga sampai pendidikan semua disajikan dalam ED NEWS</p>
-                                            <p class="about-pera1 mb-25">
+                                            <p class="about-pera1 mb-25 p">
                                             Ed News adalah sebuah platform berita daring yang menyediakan informasi terkini dan terpercaya dalam berbagai kategori topik. Dibangun dengan tujuan untuk memberikan wawasan mendalam dan beragam kepada para pembaca, Ed News menyajikan berita-berita terbaru yang relevan, menarik, dan dapat diandalkan.
-                                            Kami mengerti bahwa kebutuhan informasi setiap individu berbeda-beda. Oleh karena itu, Ed News menawarkan berbagai kategori topik yang luas, mencakup berbagai bidang dan minat, sehingga setiap pembaca dapat menemukan berita yang sesuai dengan minat dan kebutuhan mereka.
-                                            </p>
+                                            Kami mengerti bahwa kebutuhan informasi setiap individu berbeda-beda. Oleh karena itu, Ed News menawarkan berbagai kategori topik yang luas, mencakup berbagai bidang dan minat, sehingga setiap pembaca dapat menemukan berita yang sesuai dengan minat dan kebutuhan mereka. <br>
+                                            Tujuannya adalah memberikan layanan kepada para pembaca harian ednews di tempat-tempat yang sulit dijangkau oleh jaringan distribusi ednews. Dengan hadirnya ednews Online, para pembaca harian ednews terutama di Indonesia bagian timur dan di luar negeri dapat menikmati harian ednews hari itu juga, tidak perlu menunggu beberapa hari seperti biasanya  
+                                          </p>
                                         </div>
                                     
                                     <!-- ======= Team Section ======= -->
@@ -106,7 +112,7 @@
         <div class="col-lg-3 col-md-6 d-flex ms-3 align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/fad.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -119,7 +125,7 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/vin.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -132,7 +138,7 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/dan.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -145,7 +151,7 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member">
             <div class="member-img">
-              <img src="assets/img/team/jeha2.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/fek.jpeg" class="img-fluid" alt="">
               
             </div>
             <div class="member-info">
@@ -160,57 +166,7 @@
                                       </div>   
                         </div>
                         
-                        <div class="col-lg-4">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-40">
-                                <h3>Follow Us</h3>
-                            </div>
-                            <!-- Flow Socail -->
-                            <div class="single-follow mb-45">
-                                <div class="single-box">
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">  
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div> 
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                        <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- New Poster -->
-                            <div class="news-poster d-none d-lg-block">
-                                <img src="assets/img/news/news_card.jpg" alt="">
-                            </div>
-                        </div>
+                        <?php include "followus.html" ?>
                    </div>
             </div>
         </div>

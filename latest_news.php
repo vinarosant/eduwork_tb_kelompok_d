@@ -24,37 +24,44 @@ include 'admin/koneksi.php';
 
     <main>
         <!-- About US Start -->
-        <section class="blog_area section-padding" style="margin-left: 180px; margin-top:-100px">
+        <section class="blog_area section-padding" style="margin-left: 300px; margin-top:-100px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <?php include 'trending.php' ?>
                     </div>
-                    <div class="col-lg-10 mb-5 mb-lg-0">
+                    <div class="col-lg-9 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
+                        <?php
+                        $query = $koneksi->query("SELECT * FROM berita JOIN penulis ON berita.id_penulis = penulis.id_penulis");
+                            if (mysqli_num_rows($query) > 0) {
+                                while ($data = mysqli_fetch_array($query)) {
+                            ?>
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
+                                    <img class="card-img rounded-0" src="admin/berita/<?= $data["gambar"]; ?>" alt="">
                                     <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
+                                        <h3><?= $data["tgl_publish"] ?></h3>
+                                        <p><?= $data["tgl_publish"] ?></p>
                                     </a>
                                 </div>
 
                                 <div class="blog_details">
                                     <a class="d-inline-block" href="single-blog.html">
-                                        <h2>Google inks pact for new 35-storey office</h2>
+                                        <h2><?= $data["judul"] ?></h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p><?= $data["judul"] ?></p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i><?= $data["nama"] ?></</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
                             </article>
-
-                            <article class="blog_item">
+                            <?php
+                                }
+                            }
+                            ?>
+                            <!-- <article class="blog_item">
                                 <div class="blog_item_img">
                                     <img class="card-img rounded-0" src="assets/img/blog/single_blog_2.png" alt="">
                                     <a href="#" class="blog_item_date">
@@ -140,8 +147,8 @@ include 'admin/koneksi.php';
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
-                            </article>
-
+                            </article> -->
+<!-- 
                             <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
                                     <li class="page-item">
@@ -161,7 +168,7 @@ include 'admin/koneksi.php';
                                         </a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>
