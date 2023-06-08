@@ -34,14 +34,11 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Top -->
-                            <?php
-                                                // Ambil data berita secara acak
-                                                $query_top = mysqli_query($koneksi, "SELECT * FROM `berita` ORDER BY RAND() LIMIT 1");
-                                                while ($data = mysqli_fetch_assoc($query_top)) {
-                                                    // Tampilkan berita dalam kartu
-                                  ?>                 
-                                                                
-
+                            <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            // Tampilkan berita dalam kartu
+                            ?>
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
                                     <img src="admin/berita/<?php echo $data['gambar'] ?>" alt="">
