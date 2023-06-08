@@ -8,7 +8,7 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
 
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="zxx">
 
 <?php include "head.html" ?>
 
