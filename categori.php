@@ -4,6 +4,7 @@
 include 'admin/koneksi.php';
 $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
 
+include 'pagination.php';
 ?>
 
 
@@ -73,8 +74,8 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                                             <div class="row">
                                                 <?php
                                                 // Ambil data berita secara acak
-                                                $query_berita_semua = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 4");
-                                                while ($data_berita_semua = mysqli_fetch_assoc($query_berita_semua)) {
+                                                $konten = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` LIMIT $start, $perpage");
+                                                while ($data_berita_semua = mysqli_fetch_assoc($result2)) {
                                                     // Tampilkan berita dalam kartu
                                                     $id_berita_semua = $data_berita_semua['judul'];
                                                     $judul_berita_semua = $data_berita_semua['judul'];
@@ -149,9 +150,9 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
                                     <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    <?php for ($i=1; $i <= $pages; $i++) { ?>
+                                    <li><a href="?halaman=<?= $i ?>"><?= $i?></a></li>
+                                    <?php }?>
                                     <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
                                 </ul>
                             </nav>
