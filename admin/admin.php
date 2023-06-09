@@ -120,8 +120,8 @@ if (isset($_GET['id_admin'])) {
                       <td><?= $d['username']; ?></td>
                       <td><?= $d['password']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editadmin<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deleteadmin<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editadmin<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deleteadmin<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 

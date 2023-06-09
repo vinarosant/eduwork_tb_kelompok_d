@@ -115,8 +115,8 @@ if (isset($_GET['id_penulis'])) {
                       <td><?= $no++; ?></td>
                       <td><?= $d['nama']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editpenulis<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deletepenulis<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editpenulis<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deletepenulis<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 

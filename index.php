@@ -34,15 +34,21 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Top -->
+                            <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            // Tampilkan berita dalam kartu
+                            ?>
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
-                                    <img src="assets/img/trending/tiketbola.jpg" alt="">
+                                    <img src="admin/berita/<?php echo $data['gambar'] ?>" alt="">
                                     <div class="trend-top-cap">
                                         <span>Trending</span>
-                                        <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket : <br> Timnas Indonesia Vs Argentina</a></h2>
+                                        <h2><a href="details.php"><?php echo $data['judul'] ?></a></h2>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <!-- Trending Bottom -->
                             <div class="trending-bottom">
                                 <div class="row">
