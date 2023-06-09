@@ -84,7 +84,7 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="single-what-news mb-100">
                                                             <div class="what-img">
-                                                                <img src="admin/berita/<?php echo $gambar_berita_semua; ?>" style="width:60vh; height: 40vh;" alt="">
+                                                                <img src="admin/berita/<?php echo $gambar_berita_semua; ?>" style="width: 50vh; height: 40vh;" alt="">
                                                             </div>
                                                             <div class="what-cap">
                                                                 <span class="color1"><?php echo $kategori_berita_semua; ?></span>
