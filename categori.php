@@ -149,11 +149,12 @@ include 'pagination.php';
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
+                                    
+                                    <li class="page-item"><a class="page-link"<?php if($page > 1){ echo "href='?halaman=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
                                     <?php for ($i=1; $i <= $pages; $i++) { ?>
-                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i ?>" style="color: black"><?= $i?></a></li>
+                                        <li class="page-item active"><a class="page-link " href="?halaman=<?= $i ?>" style="color: black" ><?= $i; ?></a></li>
                                     <?php }?>
-                                    <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
+                                    <li class="page-item"><a class="page-link" <?php if($page < $pages) { echo "href='?halaman=$next'"; } ?>><span class="flaticon-arrow right-arrow"></span></a></li>
                                 </ul>
                             </nav>
                         </div>
