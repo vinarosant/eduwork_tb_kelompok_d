@@ -151,7 +151,7 @@ include 'pagination.php';
                                 <ul class="pagination justify-content-start">
                                     <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
                                     <?php for ($i=1; $i <= $pages; $i++) { ?>
-                                    <li><a href="?halaman=<?= $i ?>" style="color: black"><?= $i?></a></li>
+                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i ?>" style="color: black"><?= $i?></a></li>
                                     <?php }?>
                                     <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
                                 </ul>
