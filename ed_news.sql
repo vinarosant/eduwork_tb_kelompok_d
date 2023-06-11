@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 08 Jun 2023 pada 09.16
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: Jun 12, 2023 at 01:13 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,26 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
-(1, 'admin', '123');
+(3, 'admin', '$2y$10$XTnaHYKTAXRwrclUNJvCu.UpSxpGBRoQ7JRwwT/uelOzmI3g5yBk2');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita`
+-- Table structure for table `berita`
 --
 
 CREATE TABLE `berita` (
@@ -57,7 +58,7 @@ CREATE TABLE `berita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `berita`
+-- Dumping data for table `berita`
 --
 
 INSERT INTO `berita` (`id`, `judul`, `tgl_publish`, `isi`, `id_kategori`, `id_penulis`, `gambar`) VALUES
@@ -82,11 +83,10 @@ INSERT INTO `berita` (`id`, `judul`, `tgl_publish`, `isi`, `id_kategori`, `id_pe
 (19, 'Karim Benzema Sah Jadi Pemain Al Ittihad, Box Office Terbaru Liga Arab Saudi', '2023-06-07 23:50:00', 'Juara Liga Arab Saudi, Al Ittihad telah mengonfirmasi penandatanganan Karim Benzema dengan kontrak tiga tahun hingga 2026. Benzema diresmikan pada Rabu (7/6/2023).  Presiden Al Ittihad, Anmar Bin Abdullah Alhailae, menyebut perekrutan Benzema adalah tonggak bersejarah bagi klub yang bermarkas di Jeddah itu.    Mantan pemain Timnas Prancis itu tiba-tiba mengakhiri karier gemilangnya selama 14 tahun di Real Madrid pada akhir pekan lalu, setelah semula diperkirakan akan memperpanjang masa tinggalnya hingga 2024.  Benzema meninggalkan Real Madrid sebagai pencetak gol terbanyak kedua sepanjang masa dengan 354 gol dalam 648 pertandingan, memenangkan lima mahkota Liga Champions bersama Los Blancos.  Setelah mengumpulkan empat gelar La Liga dan empat mahkota Ligue 1 di Lyon, Benzema telah menegaskan bahwa dia telah mencapai semua tujuannya di sepak bola Eropa.   ', 2, 2, '1123050615_059633600_1686093588-Fx9gIYHWAAAlu5c.jpg'),
 (20, 'Hanya 10 Menit, Penjualan Tiket Timnas Indonesia Vs Argentina Hari Kedua Kembali Ludes Terjual', '2023-06-07 23:58:00', 'Pada penjualan tahap kedua yang dilaksanakan hari Selasa (6/6), tiket dijual untuk umum.  Ketum PSSI Erick Thohir menyebutkan ada 20 ribu tiket yang dijual untuk penjualan umum. Dari pantauan BolaSport.com dari laman tiket.com, antusiasme  suporter timnas Indonesia tidak menurun.  Bahkan, hanya butuh 10 menit untuk membuat tiket ludes terjual.  Sementara itu, masih ada penjualan hari terakhir yang dilaksanakan pada Kamis (7/6).  Nantinya ada 20 ribu tiket yang dijual untuk penjualan besok mulai pukul 12.00. WIB.  Total ada 60 ribu tiket yang dijual pada laga FIFA Matchday skuad Garuda nanti.', 2, 2, '226086970_fwssuaewcamwgfnjpeg-20230522082935.jpeg');
 
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -95,7 +95,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
@@ -108,7 +108,7 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komentar`
+-- Table structure for table `komentar`
 --
 
 CREATE TABLE `komentar` (
@@ -119,40 +119,49 @@ CREATE TABLE `komentar` (
   `id_berita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `komentar`
+--
+
+INSERT INTO `komentar` (`id_komentar`, `nama_pengirim`, `komentar`, `tgl_komentar`, `id_berita`) VALUES
+(1, 'Mario', 'Pak Ganjar selalu dihati!!!', '2023-06-12 01:13:06', 15);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penulis`
+-- Table structure for table `penulis`
 --
 
 CREATE TABLE `penulis` (
   `id_penulis` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL
+  `nama` varchar(50) NOT NULL,
+  `penulis_username` varchar(20) DEFAULT NULL,
+  `penulis_password` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `penulis`
+-- Dumping data for table `penulis`
 --
 
-INSERT INTO `penulis` (`id_penulis`, `nama`) VALUES
-(1, 'Feki Dui Marinda'),
-(2, 'Dandi Gus'),
-(3, 'Elvina Rosanti'),
-(4, 'Fadlan Fauzi'),
-(5, 'Ahmad Doni');
+INSERT INTO `penulis` (`id_penulis`, `nama`, `penulis_username`, `penulis_password`) VALUES
+(1, 'Feki Dui Marinda', 'feki', '$2y$10$bGynoEzEcGJmASvz9sWNSuap6cbhapjvPSWgVTVS2IjiS51WcBUT.'),
+(2, 'Dandi Gus', 'dandi', '$2y$10$xkL5ORccC.uGyDvu5onrq.s1znSglOq.T2LzgksfyOnILliqF9JiS'),
+(3, 'Elvina Rosanti', 'elvina', '$2y$10$fyIRIfTg91MFxJqHtYCReONGl/NSLOLIqYDqsSdUB8zYAW1rawwH6'),
+(4, 'Fadlan Fauzi', 'fadlan', '$2y$10$i0a7Ge8Vjn6gey5P/w/jieB6w9z4OIX7qTapTDyyVMP6KE0mCkbya'),
+(5, 'Ahmad Doni', 'ahmad', '$2y$10$/CuxPKQ6o.t3qoJ6yWs9UeXE96ylqZiPiIqFjqvZbDIqCyi77mlri');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `berita`
+-- Indexes for table `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id`),
@@ -160,71 +169,71 @@ ALTER TABLE `berita`
   ADD KEY `id_penulis` (`id_penulis`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `komentar`
+-- Indexes for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD PRIMARY KEY (`id_komentar`),
   ADD KEY `id_berita` (`id_berita`);
 
 --
--- Indeks untuk tabel `penulis`
+-- Indexes for table `penulis`
 --
 ALTER TABLE `penulis`
   ADD PRIMARY KEY (`id_penulis`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `berita`
+-- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `komentar`
+-- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `penulis`
+-- AUTO_INCREMENT for table `penulis`
 --
 ALTER TABLE `penulis`
-  MODIFY `id_penulis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_penulis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `berita`
+-- Constraints for table `berita`
 --
 ALTER TABLE `berita`
   ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `berita_ibfk_2` FOREIGN KEY (`id_penulis`) REFERENCES `penulis` (`id_penulis`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `komentar`
+-- Constraints for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_berita`) REFERENCES `berita` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

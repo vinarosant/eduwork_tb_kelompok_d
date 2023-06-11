@@ -43,16 +43,14 @@ include 'pagination.php';
                             <div class="col-lg-9 col-md-9">
                                 <div class="properties__button">
                                     <!--Nav Button  -->
-
                                     <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" <?php if(isset($_GET['Semua'])){ echo "active "; } ?>" href="categori.php?Semua" aria-selected="true">Semua</a>
-                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Kesehatan'])){ echo "active "; } ?>"href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
-                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Olahraga'])){ echo "active "; } ?>"href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
-                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Pendidikan'])){ echo "active "; } ?>"href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
-                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Politik'])){ echo "active "; } ?>"href="categori.php?Politik" aria-selected="false">Politik</a>
-                                            <a class="nav-item nav-link"  <?php if(isset($_GET['MakananMinuman'])){ echo "active "; } ?>"href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
-
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Semua'])){ echo "active "; } ?>" href="categori.php?Semua" aria-selected="true">Semua</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Kesehatan'])){ echo "active "; } ?>"  href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Olahraga'])){ echo "active "; } ?>"  href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Pendidikan'])){ echo "active "; } ?>"  href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Politik'])){ echo "active "; } ?>"  href="categori.php?Politik" aria-selected="false">Politik</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['MakananMinuman'])){ echo "active "; } ?>"  href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
                                         </div>
                                     </nav>
                                     <!--End Nav Button  -->
@@ -82,7 +80,6 @@ include 'pagination.php';
                                                     $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik' LIMIT $start,$perpage");
                                                 }else if(isset($_GET['MakananMinuman'])){
                                                     $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman' LIMIT $start,$perpage");
-
                                                 }
                                                 
                                                     if (mysqli_num_rows($query) > 0) {
@@ -126,18 +123,12 @@ include 'pagination.php';
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                <li class="page-item"><a class="page-link"<?php if($queryy > 1){ echo "href='?Semua=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
+                                <ul class="pagination justify-content-start">                
+                                    <li class="page-item"><a class="page-link"<?php if($page > 1){ echo "href='?Semua=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
                                     <?php for ($i=1; $i <= $pages; $i++) { ?>
-                                        <?php if ($queryy == $i) { ?>
-                                            <li class="page-item active"><a class="page-link " href="?Semua=<?= $i ?>" style="color: red" >
-                                            <?= $i; ?></a></li>
-                                        <?php } else{ ?>
-                                            <li class="page-item "><a class="page-link " href="?Semua=<?= $i ?>" style="color: black" >
-                                            <?= $i; ?></a></li>
-                                            <?php }?>
-                                        <?php }?>
-                                    <li class="page-item"><a class="page-link" <?php if($queryy < $pages) { echo "href='?Semua=$next'"; } ?>><span class="flaticon-arrow right-arrow"></span></a></li>
+                                        <li class="page-item active"><a class="page-link " href="?Semua=<?= $i ?>" style="color: black" ><?= $i; ?></a></li>
+                                    <?php }?>
+                                    <li class="page-item"><a class="page-link" <?php if($page < $pages) { echo "href='?Semua=$next'"; } ?>><span class="flaticon-arrow right-arrow"></span></a></li>
                                 </ul>
                             </nav>
                         </div>
