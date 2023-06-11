@@ -1,5 +1,5 @@
 <?php
-include "koneksi.php";
+include "../admin/koneksi.php";
 $halaman = "Data Berita";
 
 session_start();
@@ -23,7 +23,7 @@ if (isset($_POST['SimpanBerita'])) {
   } else {
     if ($ukuran < 208815000) {
       $xx = $rand . '_' . $filename;
-      move_uploaded_file($_FILES['gambar']['tmp_name'], 'berita/' . $rand . '_' . $filename);
+      move_uploaded_file($_FILES['gambar']['tmp_name'], '../admin/berita/' . $rand . '_' . $filename);
       mysqli_query($koneksi, "INSERT INTO berita
 (judul,tgl_publish,isi,id_kategori,id_penulis,gambar) 
 VALUES ('$judul','$tgl_publish','$isi','$id_kategori','$id_penulis','$xx')");
@@ -52,10 +52,10 @@ if (isset($_POST['EditBerita'])) {
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
       $dt = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM berita WHERE id='$id'"));
       $gambarlama = $dt['gambar'];
-      if (is_file("berita/" . $gambarlama)) {
-        unlink("berita/" . $gambarlama);
+      if (is_file("../admin/berita/" . $gambarlama)) {
+        unlink("../admin/berita/" . $gambarlama);
       }
-      move_uploaded_file($file_tmp, 'berita/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/berita/' . $nama_gambar_baru);
 
       $query  = "UPDATE berita SET 
                    judul = '$judul', 
@@ -95,8 +95,8 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $cek = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM berita WHERE id = '$id'"));
   if ($cek) {
-    if (is_file("berita/" . $cek['gambar'])) {
-      unlink("berita/" . $cek['gambar']);
+    if (is_file("../admin/berita/" . $cek['gambar'])) {
+      unlink("../admin/berita/" . $cek['gambar']);
     }
   }
   // menghapus data dari database
@@ -199,9 +199,12 @@ if (isset($_GET['id'])) {
                 </thead>
                 <tbody>
                   <?php
+                  $id = $_SESSION['id_penulis'];
                   $data = mysqli_query($koneksi, "SELECT * FROM `berita` 
                   LEFT JOIN kategori ON `kategori`.`id_kategori`=`berita`.`id_kategori`
-                  LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`");
+                  LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`
+                  WHERE berita.id_penulis = '$id'
+                  ");
                   $no = 1;
                   while ($d = mysqli_fetch_array($data)) {
                     $isi_berita = strlen($d['isi']) > 100 ? substr($d['isi'], 0, 100) . "..." : $d['isi'];
@@ -209,7 +212,7 @@ if (isset($_GET['id'])) {
                     <tr>
                       <td><?= $no++; ?></td>
                       <td>
-                        <img src="berita/<?= $d['gambar']; ?>" width="120" height="120">
+                        <img src="../admin/berita/<?= $d['gambar']; ?>" width="120" height="120">
                       </td>
                       <td><?= $d['judul']; ?></td>
                       <td><?= $d['tgl_publish']; ?></td>
@@ -289,7 +292,7 @@ if (isset($_GET['id'])) {
                                   <div class="form-group">
                                     <label for="Gambar">Gambar</label>
                                     <br>
-                                    <img src="berita/<?php echo $row['gambar']; ?>" height="120" width="120">
+                                    <img src="../admin/berita/<?php echo $row['gambar']; ?>" height="120" width="120">
                                     <input type="file" name="gambarnew" class="form-control-file">
                                     <small>Abaikan jika tidak merubah gambar.</small>
                                   </div>
@@ -303,7 +306,7 @@ if (isset($_GET['id'])) {
                                   </div>
                                   <div class="form-group">
                                     <label for="Isi">Isi</label>
-                                    <input type="text" class="form-control" value="<?= $row['isi']; ?>" name="isi" required>
+                                    <textarea name="isi" class="form-control" rows="20" col="10"><?= $row['isi']; ?></textarea>
                                   </div>
                                   <div class="form-group">
                                     <label for="Kategori">Kategori</label>
@@ -422,7 +425,9 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="form-group">
                   <label for="Isi">Isi</label>
-                  <input type="text" class="form-control" id="isi" name="isi" required>
+                  <textarea name="isi" class="form-control" cols="30" rows="10" required>
+
+                  </textarea>
                 </div>
                 <div class="form-group">
                   <label for="Kategori">Kategori</label>
@@ -437,14 +442,8 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="form-group">
                   <label for="Penulis">Penulis</label>
-                  <select name="id_penulis" class="form-control" required>
-                    <?php
-                    $nulis = mysqli_query($koneksi, "SELECT * FROM penulis");
-                    while ($penulis = mysqli_fetch_assoc($nulis)) {
-                    ?>
-                      <option value="<?php echo $penulis['id_penulis']; ?>"><?php echo $penulis['nama']; ?></option>
-                    <?php } ?>
-                  </select>
+                  <input type="hidden" name="id_penulis" value="<?= $_SESSION['id_penulis']; ?>">
+                  <input type="text" name="" class="form-control" value="<?= $_SESSION['nama']; ?>" readonly>
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -473,52 +472,52 @@ if (isset($_GET['id'])) {
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="../admin/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="../admin/plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
   <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
+  <script src="../admin/plugins/chart.js/Chart.min.js"></script>
   <!-- Sparkline -->
-  <script src="plugins/sparklines/sparkline.js"></script>
+  <script src="../admin/plugins/sparklines/sparkline.js"></script>
   <!-- JQVMap -->
-  <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <script src="../admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="../admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
   <!-- jQuery Knob Chart -->
-  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+  <script src="../admin/plugins/jquery-knob/jquery.knob.min.js"></script>
   <!-- DataTables  & Plugins -->
-  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="plugins/jszip/jszip.min.js"></script>
-  <script src="plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="../admin/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../admin/plugins/jszip/jszip.min.js"></script>
+  <script src="../admin/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="../admin/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="../admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <!-- daterangepicker -->
-  <script src="plugins/moment/moment.min.js"></script>
-  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="../admin/plugins/moment/moment.min.js"></script>
+  <script src="../admin/plugins/daterangepicker/daterangepicker.js"></script>
   <!-- Tempusdominus Bootstrap 4 -->
-  <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="../admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="../admin/plugins/summernote/summernote-bs4.min.js"></script>
   <!-- overlayScrollbars -->
-  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="../admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.js"></script>
+  <script src="../admin/dist/js/adminlte.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
+  <script src="../admin/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="dist/js/pages/dashboard.js"></script>
+  <script src="../admin/dist/js/pages/dashboard.js"></script>
   <script>
     $(function() {
       $("#example1").DataTable({
