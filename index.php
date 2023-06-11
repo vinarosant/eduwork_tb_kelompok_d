@@ -58,7 +58,7 @@ include 'admin/koneksi.php';
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                                             <div class="trend-bottom-img mb-30">
-                                            <img src="admin/berita/<?= $data["gambar"]; ?>" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" style="height: 21vh;" alt="">
                                                             
                                             </div>
                                             <div class="trend-bottom-cap">
@@ -75,7 +75,7 @@ include 'admin/koneksi.php';
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                                             <div class="trend-bottom-img mb-30">
-                                            <img src="admin/berita/<?= $data["gambar"]; ?>" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" style="height: 21vh;" alt="">
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color2">Olahraga</span>
@@ -86,15 +86,20 @@ include 'admin/koneksi.php';
                                     <?php } ?>
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
+                                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Pendidikan' LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="assets/img/trending/trending_bottom3.jpg" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" style="height: 21vh;" alt="">
                                             </div>
                                             <div class="trend-bottom-cap">
-                                                <span class="color3">Travels</span>
-                                                <h4><a href="details.php"> Welcome To The Best Model Winner Contest</a></h4>
+                                                <span class="color3">Pendidikan</span>
+                                                <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
