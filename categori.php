@@ -46,12 +46,13 @@ include 'pagination.php';
 
                                     <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" href="categori.php?Semua" aria-selected="true">Semua</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Politik" aria-selected="false">Politik</a>
-                                            <a class="nav-item nav-link"  href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
+                                            <a class="nav-item nav-link active" <?php if(isset($_GET['Semua'])){ echo "active "; } ?>" href="categori.php?Semua" aria-selected="true">Semua</a>
+                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Kesehatan'])){ echo "active "; } ?>"href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
+                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Olahraga'])){ echo "active "; } ?>"href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
+                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Pendidikan'])){ echo "active "; } ?>"href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
+                                            <a class="nav-item nav-link"  <?php if(isset($_GET['Politik'])){ echo "active "; } ?>"href="categori.php?Politik" aria-selected="false">Politik</a>
+                                            <a class="nav-item nav-link"  <?php if(isset($_GET['MakananMinuman'])){ echo "active "; } ?>"href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
+
                                         </div>
                                     </nav>
                                     <!--End Nav Button  -->
@@ -81,6 +82,7 @@ include 'pagination.php';
                                                     $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik' LIMIT $start,$perpage");
                                                 }else if(isset($_GET['MakananMinuman'])){
                                                     $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman' LIMIT $start,$perpage");
+
                                                 }
                                                 
                                                     if (mysqli_num_rows($query) > 0) {
@@ -117,6 +119,7 @@ include 'pagination.php';
 
 
         <!--Start pagination -->
+     
         <div class="pagination-area pb-45 text-center">
             <div class="container">
                 <div class="row">
@@ -124,7 +127,6 @@ include 'pagination.php';
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    
                                 <li class="page-item"><a class="page-link"<?php if($queryy > 1){ echo "href='?Semua=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
                                     <?php for ($i=1; $i <= $pages; $i++) { ?>
                                         <?php if ($queryy == $i) { ?>
@@ -143,6 +145,7 @@ include 'pagination.php';
                 </div>
             </div>
         </div>
+  
         <!-- End pagination  -->
     </main>
 

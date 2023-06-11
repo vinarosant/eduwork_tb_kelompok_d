@@ -1,5 +1,5 @@
 <?php
-$perpage=4;
+$perpage=6;
 
 $queryy = isset($_GET['Semua']) ? (int) $_GET['Semua']: 1;
 
