@@ -70,17 +70,20 @@ include 'admin/koneksi.php';
                                     <?php } ?>
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
+                                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Olahraga' LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="assets/img/trending/trending_bottom2.jpg" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" alt="">
                                             </div>
                                             <div class="trend-bottom-cap">
-                                                <span class="color2">Sports</span>
-                                                <h4>
-                                                    <h4><a href="details.php">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
-                                                </h4>
+                                                <span class="color2">Olahraga</span>
+                                                    <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
                                             <div class="trend-bottom-img mb-30">
