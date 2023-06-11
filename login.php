@@ -41,7 +41,7 @@ if($datauser){
         exit();
     }
 }else{
-    echo "gak ada";
+    echo "Tidak Ada";
 }
 
 

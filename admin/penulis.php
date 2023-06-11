@@ -164,7 +164,7 @@ if (isset($_GET['id_penulis'])) {
                                   </div>
                                   <div class="form-group">
                                     <label for="password">Password Penulis</label>
-                                    <input type="password" class="form-control" name="newpassword">
+                                    <input type="password" class="form-control" name="newpassword" required>
                                     <small>Abaikan jika tidak merubah password</small>
                                   </div>
                                   <div class="modal-footer justify-content-between">

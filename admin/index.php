@@ -180,7 +180,7 @@ if (isset($_GET['id'])) {
               ?>
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputberita"><i class="far fa-plus-square"></i> Tambah Data</a>
+                  <!-- <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputberita"><i class="far fa-plus-square"></i> Tambah Data</a> -->
                 </div>
               </div>
               <br>
@@ -303,7 +303,7 @@ if (isset($_GET['id'])) {
                                   </div>
                                   <div class="form-group">
                                     <label for="Isi">Isi</label>
-                                    <input type="text" class="form-control" value="<?= $row['isi']; ?>" name="isi" required>
+                                    <textarea name="isi" class="form-control" rows="20" col="10"><?= $row['isi']; ?></textarea>
                                   </div>
                                   <div class="form-group">
                                     <label for="Kategori">Kategori</label>
@@ -422,7 +422,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="form-group">
                   <label for="Isi">Isi</label>
-                  <input type="text" class="form-control" id="isi" name="isi" required>
+                  <textarea name="isi" class="form-control" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="form-group">
                   <label for="Kategori">Kategori</label>

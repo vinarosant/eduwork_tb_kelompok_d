@@ -425,9 +425,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="form-group">
                   <label for="Isi">Isi</label>
-                  <textarea name="isi" class="form-control" cols="30" rows="10" required>
-
-                  </textarea>
+                  <textarea name="isi" class="form-control" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="form-group">
                   <label for="Kategori">Kategori</label>
