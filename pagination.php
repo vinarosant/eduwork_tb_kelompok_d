@@ -1,7 +1,7 @@
 <?php
 //pagination
 $perpage=4;
-$page = isset ($_GET["halaman"]) ? (int)$_GET["halaman"] : 1 ;
+$page = isset ($_GET["Semua"]) ? (int)$_GET["Semua"] : 1 ;
 $start = ($page > 1) ? ($page * $perpage) - $perpage : 0;
 
 $previous = $page - 1;
