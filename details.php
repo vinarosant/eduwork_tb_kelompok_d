@@ -91,6 +91,7 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                             <h4><?php echo $jumlah_komentar['jumlah_komentar'] ?> Comments</h4>
                             <?php 
                             $data = mysqli_query($koneksi, "SELECT * FROM komentar WHERE id_berita = '$id_berita' ");
+                            if(!empty($data)){
                             while($d = mysqli_fetch_array($data)){ ?>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
@@ -114,7 +115,7 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
+                        <?php } } ?>
                             <div class="comment-form">
                                 <h4>Leave a Reply</h4>
                                 <form class="form-contact comment_form" action="add_comment.php?id=<?php echo $id_berita; ?>" method="post" id="commentForm">
