@@ -106,7 +106,7 @@ include 'admin/koneksi.php';
                         <!-- Riht content -->
                         <div class="col-lg-4">
                         <?php 
-                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 4");
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 5");
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                             <div class="trand-right-single d-flex">
