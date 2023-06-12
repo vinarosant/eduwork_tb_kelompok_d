@@ -123,13 +123,33 @@ include 'pagination.php';
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">                
-                                    <li class="page-item"><a class="page-link"<?php if($page > 1){ echo "href='?Semua=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
+
+                                <ul class="pagination justify-content-start">
+                            
+                                <?php if ((isset($_GET['Semua']))) { ?>
+                                                <li class="page-item"><a class="page-link"<?php if($queryy > 1){ echo "href='?Semua=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
+                                                <?php }?>
+                                    
                                     <?php for ($i=1; $i <= $pages; $i++) { ?>
-                                        <li class="page-item active"><a class="page-link " href="?Semua=<?= $i ?>" style="color: black" ><?= $i; ?></a></li>
-                                    <?php }?>
-                                    <li class="page-item"><a class="page-link" <?php if($page < $pages) { echo "href='?Semua=$next'"; } ?>><span class="flaticon-arrow right-arrow"></span></a></li>
-                                </ul>
+                                        <?php if ($queryy == $i) { ?>
+                                            <?php if ((isset($_GET['Semua']))) { ?>
+                                                <li class="page-item active"><a class="page-link " href="?Semua=<?= $i ?>" style="color: red" >
+                                                <?= $i; ?></a></li>
+                                            <?php }?>
+                                            
+                                        <?php } else{ ?>
+                                            <?php if ((isset($_GET['Semua']))) { ?>
+                                                <li class="page-item"><a class="page-link " href="?Semua=<?= $i ?>" style="color: Black" >
+                                                <?= $i; ?></a></li>
+                                            <?php }?>
+                                            <?php }?>
+                                        <?php }?>
+                                        <?php if ((isset($_GET['Semua']))) { ?>
+                                                <li class="page-item"><a class="page-link" <?php if($queryy < $pages) { echo "href='?Semua=$next'"; } ?>><span class="flaticon-arrow right-arrow"></span></a></li>
+                                                <?php }?>
+                               
+                            </ul>
+    
                             </nav>
                         </div>
                     </div>
