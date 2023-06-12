@@ -71,7 +71,7 @@ include 'admin/koneksi.php';
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
                                         <?php 
-                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Olahraga' LIMIT 4");
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Olahraga' LIMIT 1");
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                                             <div class="trend-bottom-img mb-30">
@@ -87,7 +87,7 @@ include 'admin/koneksi.php';
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
                                         <?php 
-                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Pendidikan' LIMIT 4");
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Pendidikan' LIMIT 1");
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                                             <div class="trend-bottom-img mb-30">
