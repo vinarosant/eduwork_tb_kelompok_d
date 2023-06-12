@@ -127,7 +127,7 @@ include 'admin/koneksi.php';
         <!--   Weekly2-News start -->
         
         <div class="weekly2-news-area  weekly2-pading gray-bg">
-            <div class="container" style="margin-top: -70px;">
+            <div class="container" style="margin-top: -70px; margin-bottom: -70px;">
                 <div class="weekly2-wrapper">
                     <!-- section Tittle -->
                     <div class="row">
