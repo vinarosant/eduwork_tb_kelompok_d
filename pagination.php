@@ -2,6 +2,7 @@
 $perpage=4;
 $queryy = (isset($_GET['Semua'])) ? (int) $_GET['Semua'] : 1;
 
+
 $start = ($queryy > 1) ? ($queryy * $perpage) - $perpage: 0;
 
 $previous = $queryy - 1;

@@ -43,15 +43,14 @@ include 'pagination.php';
                             <div class="col-lg-9 col-md-9">
                                 <div class="properties__button">
                                     <!--Nav Button  -->
-
                                     <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" href="categori.php?Semua" aria-selected="true">Semua</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
-                                            <a class="nav-item nav-link"  href="categori.php?Politik" aria-selected="false">Politik</a>
-                                            <a class="nav-item nav-link"  href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Semua'])){ echo "active "; } ?>" href="categori.php?Semua" aria-selected="true">Semua</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Kesehatan'])){ echo "active "; } ?>"  href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Olahraga'])){ echo "active "; } ?>"  href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Pendidikan'])){ echo "active "; } ?>"  href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['Politik'])){ echo "active "; } ?>"  href="categori.php?Politik" aria-selected="false">Politik</a>
+                                            <a class="nav-item nav-link <?php if(isset($_GET['MakananMinuman'])){ echo "active "; } ?>"  href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
                                         </div>
                                     </nav>
                                     <!--End Nav Button  -->
@@ -117,12 +116,14 @@ include 'pagination.php';
 
 
         <!--Start pagination -->
+     
         <div class="pagination-area pb-45 text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
+
                                 <ul class="pagination justify-content-start">
                             
                                 <?php if ((isset($_GET['Semua']))) { ?>
@@ -148,12 +149,14 @@ include 'pagination.php';
                                                 <?php }?>
                                
                             </ul>
+    
                             </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+  
         <!-- End pagination  -->
     </main>
 
