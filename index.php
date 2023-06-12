@@ -125,6 +125,7 @@ include 'admin/koneksi.php';
             </div>
         </div>
         <!--   Weekly2-News start -->
+        
         <div class="weekly2-news-area  weekly2-pading gray-bg">
             <div class="container" style="margin-top: -70px;">
                 <div class="weekly2-wrapper">
@@ -136,58 +137,84 @@ include 'admin/koneksi.php';
                             </div>
                         </div>
                     </div>
+                    <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="weekly2-news-active dot-style d-flex dot-style">
                                 <div class="weekly2-single">
+                                
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News1.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News2.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Event night</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News3.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News4.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Event time</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News4.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
@@ -195,6 +222,7 @@ include 'admin/koneksi.php';
                 </div>
             </div>
         </div>
+        
         <!-- End Weekly-News -->
         <!--  Recent Articles start -->
         <div class="recent-articles">
