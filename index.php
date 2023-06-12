@@ -239,16 +239,21 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
+                            <?php
+                        $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY tgl_publish DESC LIMIT 5");
+                            if (mysqli_num_rows($query) > 0) {
+                                while ($data = mysqli_fetch_array($query)) {
+                            ?>
                                 <div class="single-recent mb-100">
                                     <div class="what-img">
-                                        <img src="assets/img/news/recent1.jpg" alt="">
+                                        <img src="admin/berita/<?= $data["gambar"]; ?>" alt="" style="width: 50vh; height: 40vh;">
                                     </div>
                                     <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                        <span class="color1"><?= $data["kategori"] ?></span>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
                                 </div>
-                                <div class="single-recent mb-100">
+                                <!-- <div class="single-recent mb-100">
                                     <div class="what-img">
                                         <img src="assets/img/news/recent2.jpg" alt="">
                                     </div>
@@ -273,8 +278,13 @@ include 'admin/koneksi.php';
                                     <div class="what-cap">
                                         <span class="color1">Night party</span>
                                         <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
+                                    </div> -->
+                                    <?php
+                                }
+                            }
+                            ?>
                                 </div>
+
                             </div>
                         </div>
                     </div>
