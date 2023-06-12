@@ -35,7 +35,7 @@ include 'admin/koneksi.php';
                         <div class="col-lg-8">
                             <!-- Trending Top -->
                             <?php 
-                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` LIMIT 1");
+                            $query = mysqli_query($koneksi, "SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY RAND() LIMIT 1");
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                             <div class="trending-top mb-30">
