@@ -141,11 +141,7 @@ include 'admin/koneksi.php';
                             $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
-<<<<<<< HEAD
                     <div class="row">
-=======
-                    <div class="row"> 
->>>>>>> dandi
                         <div class="col-12">
                             <div class="weekly2-news-active dot-style d-flex dot-style">
                                 <div class="weekly2-single">
