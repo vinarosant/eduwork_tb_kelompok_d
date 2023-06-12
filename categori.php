@@ -130,7 +130,7 @@ include 'pagination.php';
                                                 <li class="page-item"><a class="page-link"<?php if($queryy > 1){ echo "href='?Semua=$previous'"; } ?>><span class="flaticon-arrow roted"></span></a></li>
                                                 <?php }?>
                                     
-                                    <?php for ($i=1; $i <= $pages; $i++) { ?>
+                                    <?php for ($i=0; $i <= $pages; $i++) { ?>
                                         <?php if ($queryy == $i) { ?>
                                             <?php if ((isset($_GET['Semua']))) { ?>
                                                 <li class="page-item active"><a class="page-link " href="?Semua=<?= $i ?>" style="color: red" >
