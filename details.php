@@ -89,6 +89,9 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                         <!-- From -->
                         <div class="comments-area">
                             <h4><?php echo $jumlah_komentar['jumlah_komentar'] ?> Comments</h4>
+                            <?php 
+                            $data = mysqli_query($koneksi, "SELECT * FROM komentar WHERE id_berita = '$id_berita' ");
+                            while($d = mysqli_fetch_array($data)){ ?>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -97,20 +100,21 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                                         </div>
                                         <div class="desc">
                                             <p class="comment">
-                                                <?php echo $data_comment['komentar'] ?>
+                                                <?php echo $d['komentar'] ?>
                                             </p>
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-flex align-items-center">
                                                     <h5>
-                                                        <a href="#"><?php echo ucfirst($data_comment['nama_pengirim']) ?></a>
+                                                        <a href="#"><?php echo ucfirst($d['nama_pengirim']) ?></a>
                                                     </h5>
-                                                    <p class="date"><?php echo date('l, j F Y, H:i', strtotime($data_comment['komentar'])) ?></p>
+                                                    <p class="date"><?php echo date('l, j F Y, H:i', strtotime($d['tgl_komentar'])) ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        <?php } ?>
                             <div class="comment-form">
                                 <h4>Leave a Reply</h4>
                                 <form class="form-contact comment_form" action="add_comment.php?id=<?php echo $id_berita; ?>" method="post" id="commentForm">

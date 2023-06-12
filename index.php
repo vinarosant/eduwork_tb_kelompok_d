@@ -43,7 +43,7 @@ include 'admin/koneksi.php';
                                     <img src="admin/berita/<?php echo $data['gambar'] ?>" alt="">
                                     <div class="trend-top-cap">
                                         <span>Trending</span>
-                                        <h2><a href="details.php"><?php echo $data['judul'] ?></a></h2>
+                                        <h2><a href="details.php?id=<?php echo $data['id']; ?>"><?php echo $data['judul'] ?></a></h2>
                                     </div>
                                 </div>
                             </div>
