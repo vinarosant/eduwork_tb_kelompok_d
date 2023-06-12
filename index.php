@@ -43,7 +43,7 @@ include 'admin/koneksi.php';
                                     <img src="admin/berita/<?php echo $data['gambar'] ?>" alt="">
                                     <div class="trend-top-cap">
                                         <span>Trending</span>
-                                        <h2><a href="details.php"><?php echo $data['judul'] ?></a></h2>
+                                        <h2><a href="details.php?id=<?php echo $data['id']; ?>"><?php echo $data['judul'] ?></a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -105,51 +105,20 @@ include 'admin/koneksi.php';
                         </div>
                         <!-- Riht content -->
                         <div class="col-lg-4">
+                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 4");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="assets/img/trending/right1.jpg" alt="">
+                                <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 120px; height: 100px;" alt="">
                                 </div>
                                 <div class="trand-right-cap">
-                                    <span class="color1">Concert</span>
-                                    <h4><a href="details.php">Link Beli Tiket Konser Coldplay</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                    <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                 </div>
                             </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right2.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color3">sea beach</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right3.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color2">Bike Show</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right4.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color4">See beach</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right5.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color1">Skeping</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

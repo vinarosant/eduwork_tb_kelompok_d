@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2023 at 01:13 AM
+-- Generation Time: Jun 12, 2023 at 04:01 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -124,7 +124,9 @@ CREATE TABLE `komentar` (
 --
 
 INSERT INTO `komentar` (`id_komentar`, `nama_pengirim`, `komentar`, `tgl_komentar`, `id_berita`) VALUES
-(1, 'Mario', 'Pak Ganjar selalu dihati!!!', '2023-06-12 01:13:06', 15);
+(1, 'Mario', 'Pak Ganjar selalu dihati!!!', '2023-06-12 01:13:06', 15),
+(2, 'Dinda', 'Ngeri bgttt', '2023-06-12 13:42:33', 8),
+(3, 'gsgs', 'gsgsgs', '2023-06-12 13:43:13', 8);
 
 -- --------------------------------------------------------
 
@@ -213,7 +215,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `penulis`

@@ -89,28 +89,34 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                         <!-- From -->
                         <div class="comments-area">
                             <h4><?php echo $jumlah_komentar['jumlah_komentar'] ?> Comments</h4>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="assets/img/comment/default_avatar.png" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                <?php echo $data_comment['komentar'] ?>
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#"><?php echo ucfirst($data_comment['nama_pengirim']) ?></a>
-                                                    </h5>
-                                                    <p class="date"><?php echo date('l, j F Y, H:i', strtotime($data_comment['komentar'])) ?></p>
+                            <?php
+                            $data = mysqli_query($koneksi, "SELECT * FROM komentar WHERE id_berita = '$id_berita' ");
+                            if (!empty($data)) {
+                                while ($d = mysqli_fetch_array($data)) { ?>
+                                    <div class="comment-list">
+                                        <div class="single-comment justify-content-between d-flex">
+                                            <div class="user justify-content-between d-flex">
+                                                <div class="thumb">
+                                                    <img src="assets/img/comment/default_avatar.png" alt="">
+                                                </div>
+                                                <div class="desc">
+                                                    <p class="comment">
+                                                        <?php echo $d['komentar'] ?>
+                                                    </p>
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="d-flex align-items-center">
+                                                            <h5>
+                                                                <a href="#"><?php echo ucfirst($d['nama_pengirim']) ?></a>
+                                                            </h5>
+                                                            <p class="date"><?php echo date('l, j F Y, H:i', strtotime($d['tgl_komentar'])) ?></p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                            <?php }
+                            } ?>
                             <div class="comment-form">
                                 <h4>Leave a Reply</h4>
                                 <form class="form-contact comment_form" action="add_comment.php?id=<?php echo $id_berita; ?>" method="post" id="commentForm">
@@ -138,94 +144,43 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="section-tittle mb-40">
-                            <h3>Follow Us</h3>
-                        </div>
-                        <!-- Flow Socail -->
-                        <div class="single-follow mb-45">
-                            <div class="single-box">
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- New Poster -->
-                        <div class="news-poster d-none d-lg-block">
-                            <img src="assets/img/news/news_card.jpg" alt="">
-                        </div>
+                    <?php include 'followus.html' ?>
                         <div class="blog_right_sidebar mt-50">
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title">Related News</h3>
-                                <div class="media post_item">
-                                    <img src="assets/img/post/post_1.png" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>From life was you fish...</h3>
-                                        </a>
-                                        <p>January 12, 2019</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="assets/img/post/post_2.png" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>The Amazing Hubble</h3>
-                                        </a>
-                                        <p>02 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="assets/img/post/post_3.png" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>Astronomy Or Astrology</h3>
-                                        </a>
-                                        <p>03 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="assets/img/post/post_4.png" alt="post">
-                                    <div class="media-body">
-                                        <a href="single-blog.html">
-                                            <h3>Asteroids telescope</h3>
-                                        </a>
-                                        <p>01 Hours ago</p>
-                                    </div>
-                                </div>
+                                <?php
+                                $id_berita = $_GET['id'];
+
+                                $query = mysqli_query($koneksi, "SELECT b.id_kategori FROM berita b WHERE b.id = $id_berita");
+
+                                if ($query) {
+                                    if (mysqli_num_rows($query) > 0) {
+                                        $row = mysqli_fetch_assoc($query);
+                                        $id_kategori = $row['id_kategori'];
+
+                                        $sql_related = "SELECT b.id, b.judul, b.tgl_publish, b.gambar FROM berita b WHERE b.id_kategori = $id_kategori AND b.id != $id_berita LIMIT 4";
+                                        $result_related = mysqli_query($koneksi, $sql_related);
+
+                                        while ($row_related = mysqli_fetch_assoc($result_related)) {
+                                            $id_berita_related = $row_related['id'];
+                                            $judul = $row_related['judul'];
+                                            $tgl_publish = $row_related['tgl_publish'];
+                                            $gambar = $row_related['gambar'];
+                                ?>
+                                            <div class="media post_item">
+                                                <img src="admin/berita/<?php echo $gambar; ?>" alt="post" style="width: 10vh; height: 8vh;">
+                                                <div class="media-body">
+                                                    <a href="details.php?id=<?php echo $id_berita_related; ?>">
+                                                        <h3><?php echo $judul; ?></h3>
+                                                    </a>
+                                                    <p><?php echo date('l, j F Y', strtotime($tgl_publish)); ?></p>
+                                                </div>
+                                            </div>
+                                <?php
+                                        }
+                                    }
+                                }
+                                ?>
                             </aside>
                         </div>
                     </div>
