@@ -34,8 +34,10 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Top -->
-                            <?php
-                            $query = mysqli_query($koneksi, "SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY RAND() LIMIT 1");
+
+                            <?php 
+                            $query = mysqli_query($koneksi, "SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY jmlh DESC LIMIT 1");
+
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                                 <div class="trending-top mb-30">
@@ -105,8 +107,10 @@ include 'admin/koneksi.php';
                         </div>
                         <!-- Riht content -->
                         <div class="col-lg-4">
-                            <?php
-                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 4");
+
+                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 5");
+
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
                                 <div class="trand-right-single d-flex">
@@ -125,6 +129,7 @@ include 'admin/koneksi.php';
             </div>
         </div>
         <!--   Weekly2-News start -->
+
         <div class="weekly2-wrapper">
             <!-- section Tittle -->
             <div class="weekly2-news-area  weekly2-pading gray-bg">
@@ -205,42 +210,26 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
+                            <?php
+                        $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY tgl_publish DESC LIMIT 5");
+                            if (mysqli_num_rows($query) > 0) {
+                                while ($data = mysqli_fetch_array($query)) {
+                            ?>
                                 <div class="single-recent mb-100">
                                     <div class="what-img">
-                                        <img src="assets/img/news/recent1.jpg" alt="">
+                                        <img src="admin/berita/<?= $data["gambar"]; ?>" alt="" style="width: 50vh; height: 40vh;">
                                     </div>
                                     <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                        <span class="color1"><?= $data["kategori"] ?></span>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
                                 </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/news/recent2.jpg" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
+                                    <?php
+                                }
+                            }
+                            ?>
                                 </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/news/recent3.jpg" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/news/recent2.jpg" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
