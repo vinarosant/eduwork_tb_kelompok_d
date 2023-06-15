@@ -1,6 +1,6 @@
 <?php
 include 'admin/koneksi.php';
-
+$halaman = "The Art Of Publishing";
 $id_berita = $_GET['id'];
 
 // Query untuk mengambil data berita berdasarkan ID
@@ -29,7 +29,7 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<?php include "head.html" ?>
+<?php include "head.php" ?>
 
 <body>
 

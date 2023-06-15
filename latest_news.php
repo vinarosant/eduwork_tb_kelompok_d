@@ -1,9 +1,10 @@
 <?php
 include 'admin/koneksi.php';
+$halaman = "Latest News";
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
-<?php include "head.html" ?>
+<?php include "head.php" ?>
 
 <body>
 

@@ -1,7 +1,11 @@
+<?php
+include 'admin/koneksi.php';
+$halaman = "Tentang";
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
-<?php include "head.html";
-include 'admin/koneksi.php';
+<?php include "head.php";
 ?>
 
 <style>

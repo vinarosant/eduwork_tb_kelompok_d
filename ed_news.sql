@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2023 at 04:01 PM
+-- Generation Time: Jun 15, 2023 at 04:10 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -126,7 +126,43 @@ CREATE TABLE `komentar` (
 INSERT INTO `komentar` (`id_komentar`, `nama_pengirim`, `komentar`, `tgl_komentar`, `id_berita`) VALUES
 (1, 'Mario', 'Pak Ganjar selalu dihati!!!', '2023-06-12 01:13:06', 15),
 (2, 'Dinda', 'Ngeri bgttt', '2023-06-12 13:42:33', 8),
-(3, 'gsgs', 'gsgsgs', '2023-06-12 13:43:13', 8);
+(3, 'roni', 'turut berduka', '2023-06-12 13:43:13', 8),
+(4, 'Galih Sukristyan', 'Enak banget sih ini ', '2023-06-12 20:26:53', 1),
+(5, 'Sutaji', 'Gila banget sih ', '2023-06-12 20:27:59', 20),
+(6, 'Vina', 'Wahh seru bingitzzz', '2023-06-12 20:41:31', 10),
+(7, 'Dandy', 'naise info', '2023-06-14 10:43:54', 18),
+(8, 'Surya', 'gasabar banget mau nonton', '2023-06-15 15:14:52', 18),
+(9, 'Ninda', 'akhirnya ada infonya', '2023-06-15 15:15:38', 18),
+(10, 'Joni', 'dukung siapa nih', '2023-06-15 15:16:58', 18),
+(11, 'Fino', 'tim inter angkat tangannnn', '2023-06-15 15:17:27', 18),
+(12, 'Toni', 'Manchester City sih fixx', '2023-06-15 15:17:53', 18),
+(13, 'Wawan', 'Gasabar mau liat', '2023-06-15 15:20:43', 20),
+(14, 'Sinta', 'Dapettt dong aku', '2023-06-15 15:21:03', 20),
+(15, 'tino', 'cung yg dapet', '2023-06-15 15:21:22', 20),
+(16, 'jingga', 'akkkk gasabar gila', '2023-06-15 15:21:52', 20),
+(17, 'Yoan', 'yah ga dapet', '2023-06-15 15:22:11', 20),
+(18, 'kinan', 'seruu fix ini', '2023-06-15 15:22:32', 20),
+(19, 'Fimo', 'gila ini seru sih', '2023-06-15 15:23:20', 20),
+(20, 'Tyo', 'inspiratif bgt ini sih', '2023-06-15 15:25:05', 11),
+(21, 'Gina', 'unik bgt sih', '2023-06-15 15:31:48', 4),
+(22, 'Galih', 'baru tau kalo ada ini', '2023-06-15 15:32:20', 4),
+(23, 'jingga', 'pengen nyoba', '2023-06-15 15:32:59', 4),
+(24, 'Tuna', 'pak ganjar emng keren', '2023-06-15 15:45:19', 15),
+(25, 'Wiwa', 'serem yah jaman sekarang', '2023-06-15 15:46:21', 8),
+(26, 'tira', 'semoga cepat pulih', '2023-06-15 15:46:53', 8),
+(27, 'aldo', 'kok jadi gini', '2023-06-15 15:47:04', 8),
+(28, 'Koni', 'turut senang', '2023-06-15 15:48:33', 19),
+(29, 'anto', 'Karim Benzema kerennn', '2023-06-15 15:52:47', 19),
+(30, 'Wina', 'Wahhh congrats', '2023-06-15 15:53:12', 19),
+(31, 'yuka', 'naise info', '2023-06-15 15:54:59', 7),
+(32, 'Gina', 'HAHAHHA KOK NGAKAK', '2023-06-15 15:55:32', 13),
+(33, 'pipi', 'viral fix ', '2023-06-15 15:55:54', 13),
+(34, 'roli', 'ini serius gasih', '2023-06-15 15:56:13', 13),
+(35, 'qinan', 'played coplay', '2023-06-15 15:57:34', 13),
+(36, 'tono', 'asdfghjkl sih', '2023-06-15 15:58:04', 13),
+(37, 'Rita', 'hahaha njir', '2023-06-15 15:59:48', 13),
+(38, 'Ruth', 'gg gaming', '2023-06-15 16:00:29', 13),
+(39, 'no namw', 'njir ', '2023-06-15 16:01:58', 13);
 
 -- --------------------------------------------------------
 
@@ -203,7 +239,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -215,7 +251,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `penulis`

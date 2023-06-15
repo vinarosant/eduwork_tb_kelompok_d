@@ -1,14 +1,14 @@
 <?php
 include 'admin/koneksi.php';
-
 include 'pagination.php';
+$halaman = "Kategori";
 ?>
 
 
 <!doctype html>
 <html lang="zxx">
 
-<?php include "head.html" ?>
+<?php include "head.php" ?>
 
 <body>
 
@@ -83,15 +83,15 @@ include 'pagination.php';
                                                 if (isset($_GET['Semua'])) {
                                                     $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY RAND() LIMIT $start,$perpage");
                                                 } else if (isset($_GET['Kesehatan'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Kesehatan' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Kesehatan'");
                                                 } else if (isset($_GET['Olahraga'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Olahraga' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Olahraga'");
                                                 } else if (isset($_GET['Pendidikan'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Pendidikan' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Pendidikan'");
                                                 } else if (isset($_GET['Politik'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik'");
                                                 } else if (isset($_GET['MakananMinuman'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman'");
                                                 }
 
                                                 if (mysqli_num_rows($query) > 0) {
