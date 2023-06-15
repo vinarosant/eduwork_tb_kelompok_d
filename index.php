@@ -147,7 +147,7 @@ $halaman = "Home";
                                 <div class="weekly2-news-active dot-style d-flex dot-style">
                                     <?php
                                     // Menghitung tanggal 7 hari sebelumnya
-                                    $sevenDaysAgo = date('Y-m-d', strtotime('-7 days'));
+                                    $sevenDaysAgo = date('Y-m-d', strtotime('-14 days'));
 
                                     $query = mysqli_query($koneksi, "SELECT b.*, k.kategori, COUNT(ko.id_komentar) AS total_komentar
                                     FROM `berita` AS b
