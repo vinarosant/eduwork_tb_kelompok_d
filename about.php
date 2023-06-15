@@ -1,6 +1,6 @@
 <?php
 include 'admin/koneksi.php';
-$halaman = "Tentang";
+$halaman = "About;
 ?>
 
 <!doctype html>
