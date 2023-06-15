@@ -34,7 +34,7 @@ $halaman = "Home";
                         <div class="col-lg-8">
                             <!-- Trending Top -->
 
-                            <?php 
+                            <?php
                             $query = mysqli_query($koneksi, "SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY jmlh DESC LIMIT 1");
 
                             while ($data = mysqli_fetch_assoc($query)) {
@@ -107,7 +107,7 @@ $halaman = "Home";
                         <!-- Riht content -->
                         <div class="col-lg-4">
 
-                        <?php 
+                            <?php
                             $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 5");
 
                             while ($data = mysqli_fetch_assoc($query)) {
@@ -146,31 +146,25 @@ $halaman = "Home";
                             <div class="col-12">
                                 <div class="weekly2-news-active dot-style d-flex dot-style">
                                     <?php
-                                    // Menghitung tanggal 7 hari sebelumnya
-                                    $sevenDaysAgo = date('Y-m-d', strtotime('-14 days'));
+                                    $startDate = '2023-06-02';
+                                    $endDate = '2023-06-09';
 
                                     $query = mysqli_query($koneksi, "SELECT b.*, k.kategori, COUNT(ko.id_komentar) AS total_komentar
                                     FROM `berita` AS b
                                     JOIN `kategori` AS k ON b.`id_kategori` = k.`id_kategori`
                                     LEFT JOIN `komentar` AS ko ON b.`id` = ko.`id_berita`
-                                    WHERE b.`tgl_publish` >= '$sevenDaysAgo'
+                                    WHERE b.`tgl_publish` BETWEEN '$startDate' AND '$endDate'
                                     GROUP BY b.`id`
                                     ORDER BY total_komentar DESC
                                     LIMIT 7");
 
-                                    $used_ids = array(); // Array untuk menyimpan id berita yang sudah ditampilkan
-
                                     while ($data = mysqli_fetch_assoc($query)) {
-                                        if (in_array($data['id'], $used_ids)) {
-                                            continue; // Jika id berita sudah ada dalam array, skip iterasi selanjutnya
-                                        }
-                                        $used_ids[] = $data['id']; // Tambahkan id berita ke dalam array
-
                                         $judul = $data['judul'];
                                         $judulPotong = $judul;
                                         if (strlen($judul) > 40) {
                                             $judulPotong = substr($judul, 0, 40) . '...';
                                         }
+
                                     ?>
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
@@ -209,31 +203,31 @@ $halaman = "Home";
                     <div class="row">
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
-                            <?php
-                        $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY tgl_publish DESC LIMIT 5");
-                            if (mysqli_num_rows($query) > 0) {
-                                while ($data = mysqli_fetch_array($query)) {
-                            ?>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="admin/berita/<?= $data["gambar"]; ?>" alt="" style="width: 50vh; height: 40vh;">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1"><?= $data["kategori"] ?></span>
-                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
-                                    </div>
-                                </div>
-                                    <?php
+                                <?php
+                                $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY tgl_publish DESC LIMIT 5");
+                                if (mysqli_num_rows($query) > 0) {
+                                    while ($data = mysqli_fetch_array($query)) {
+                                ?>
+                                        <div class="single-recent mb-100">
+                                            <div class="what-img">
+                                                <img src="admin/berita/<?= $data["gambar"]; ?>" alt="" style="width: 50vh; height: 40vh;">
+                                            </div>
+                                            <div class="what-cap">
+                                                <span class="color1"><?= $data["kategori"] ?></span>
+                                                <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
+                                            </div>
+                                        </div>
+                                <?php
+                                    }
                                 }
-                            }
-                            ?>
-                                </div>
-
+                                ?>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <!--Recent Articles End -->
         <!--Start pagination -->
