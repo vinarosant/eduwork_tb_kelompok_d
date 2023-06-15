@@ -1,8 +1,5 @@
 <?php
 include 'admin/koneksi.php';
-error_reporting(0);
-$query_count_comment = mysqli_query($koneksi, "SELECT COUNT(*) AS jumlah_komentar FROM `komentar` WHERE `id_berita` = '$id_berita'");
-$jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -38,6 +35,9 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                             if (mysqli_num_rows($query) > 0) {
                                 while ($data = mysqli_fetch_array($query)) {
                                     $isi_berita = strlen($data['isi']) > 200 ? substr($data['isi'], 0, 200) . "....." : $data['isi'];
+                                    $id_berita = $data['id'];
+                                    $query_count_comment = mysqli_query($koneksi, "SELECT COUNT(*) AS jumlah_komentar FROM `komentar` WHERE `id_berita` = '$id_berita'");
+                                    $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                             ?>
                             <article class="blog_item">
                                 <div class="blog_item_img">
