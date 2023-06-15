@@ -78,10 +78,10 @@ $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
                                 <div class="section-tittle">
                                     <h3 class="mr-20">Share:</h3>
                                     <ul>
-                                        <li><a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a></li>
+                                        <li><a href="https://instagram.com/faazinn?igshid=OGQ5ZDc2ODk2ZA=="><img src="assets/img/news/icon-ins.png" alt=""></a></li>
+                                        <li><a href="https://web.facebook.com/dandygus07/"><img src="assets/img/news/icon-fb.png" alt=""></a></li>
+                                        <li><a href="https://twitter.com/lima5puluh_?t=M_MEp5BxyeRB6FCkrJCBUQ&s=08"><img src="assets/img/news/icon-tw.png" alt=""></a></li>
+                                        <li><a href="https://www.youtube.com/channel/UCBdS_7PfFcuH4kL0QbshiQA"><img src="assets/img/news/icon-yo.png" alt=""></a></li>
                                     </ul>
                                 </div>
                             </div>
