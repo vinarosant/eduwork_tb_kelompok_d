@@ -1,14 +1,12 @@
 <?php
-
-
 include 'admin/koneksi.php';
-$query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
 
+include 'pagination.php';
 ?>
 
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="zxx">
 
 <?php include "head.html" ?>
 
@@ -31,7 +29,7 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
 
     <main>
         <!-- Whats New Start -->
-        <section class="whats-news-area pt-50 pb-20">
+        <section class="whats-news-area pb-20">
             <div class="container">
                 <div class="row">
                     <?php include 'trending.php' ?>
@@ -47,16 +45,24 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                                     <!--Nav Button  -->
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Semua</a>
-                                            <?php
-                                            while ($data_kategori = mysqli_fetch_assoc($query_kategori)) {
-                                                $id_kategori = $data_kategori['id_kategori'];
-                                                $kategori = $data_kategori['kategori'];
-                                            ?>
-                                                <a class="nav-item nav-link" id="nav-category-<?php echo $id_kategori; ?>" data-toggle="tab" href="#nav-category-<?php echo $id_kategori; ?>" role="tab" aria-controls="nav-category-<?php echo $id_kategori; ?>" aria-selected="false"><?php echo $kategori; ?></a>
-                                            <?php
-                                            }
-                                            ?>
+                                            <a class="nav-item nav-link <?php if (isset($_GET['Semua'])) {
+                                                                            echo "active ";
+                                                                        } ?>" href="categori.php?Semua" aria-selected="true">Semua</a>
+                                            <a class="nav-item nav-link <?php if (isset($_GET['Kesehatan'])) {
+                                                                            echo "active ";
+                                                                        } ?>" href="categori.php?Kesehatan" aria-selected="false">Kesehatan</a>
+                                            <a class="nav-item nav-link <?php if (isset($_GET['Olahraga'])) {
+                                                                            echo "active ";
+                                                                        } ?>" href="categori.php?Olahraga" aria-selected="false">Olahraga</a>
+                                            <a class="nav-item nav-link <?php if (isset($_GET['Pendidikan'])) {
+                                                                            echo "active ";
+                                                                        } ?>" href="categori.php?Pendidikan" aria-selected="false">Pendidikan</a>
+                                            <a class="nav-item nav-link <?php if (isset($_GET['Politik'])) {
+                                                                            echo "active ";
+                                                                        } ?>" href="categori.php?Politik" aria-selected="false">Politik</a>
+                                            <a class="nav-item nav-link <?php if (isset($_GET['MakananMinuman'])) {
+                                                                            echo "active ";
+                                                                        } ?>" href="categori.php?MakananMinuman" aria-selected="false">Makanan & Minuman</a>
                                         </div>
                                     </nav>
                                     <!--End Nav Button  -->
@@ -64,133 +70,63 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-12">
                                 <!-- Nav Card -->
-                                <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-content">
 
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <div class="tab-pane fade show active">
                                         <div class="whats-news-caption">
                                             <div class="row">
                                                 <?php
-                                                // Ambil data berita secara acak
-                                                $query_berita_semua = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 4");
-                                                while ($data_berita_semua = mysqli_fetch_assoc($query_berita_semua)) {
-                                                    // Tampilkan berita dalam kartu
-                                                    $id_berita_semua = $data_berita_semua['judul'];
-                                                    $judul_berita_semua = $data_berita_semua['judul'];
-                                                    $gambar_berita_semua = $data_berita_semua['gambar'];
-                                                    $kategori_berita_semua = $data_berita_semua['kategori'];
-                                                ?>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <div class="single-what-news mb-100">
-                                                            <div class="what-img">
-                                                                <img src="admin/berita/<?php echo $gambar_berita_semua; ?>" style="width:60vh; height: 40vh;" alt="">
-                                                            </div>
-                                                            <div class="what-cap">
-                                                                <span class="color1"><?php echo $kategori_berita_semua; ?></span>
-                                                                <h4><a href="details.php?id=<?php echo $data_berita_semua['id']; ?>"><?php echo $judul_berita_semua; ?></a></h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                error_reporting(0);
+                                                include 'admin/koneksi.php';
+                                                if (isset($_GET['Semua'])) {
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY RAND() LIMIT $start,$perpage");
+                                                } else if (isset($_GET['Kesehatan'])) {
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Kesehatan' LIMIT $start,$perpage");
+                                                } else if (isset($_GET['Olahraga'])) {
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Olahraga' LIMIT $start,$perpage");
+                                                } else if (isset($_GET['Pendidikan'])) {
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Pendidikan' LIMIT $start,$perpage");
+                                                } else if (isset($_GET['Politik'])) {
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik' LIMIT $start,$perpage");
+                                                } else if (isset($_GET['MakananMinuman'])) {
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman' LIMIT $start,$perpage");
+                                                }
 
-                                    <?php while ($data_kategori = mysqli_fetch_assoc($query_kategori)) {
-                                        $id_kategori = $data_kategori['id_kategori'];
-                                        $kategori = $data_kategori['kategori'];
-                                    ?>
-                                        <div class="tab-pane fade" id="nav-category-<?php echo $id_kategori; ?>" role="tabpanel" aria-labelledby="nav-category-<?php echo $id_kategori; ?>-tab">
-                                            <div class="whats-news-caption">
-                                                <div class="row">
-                                                    <?php
-                                                    // Ambil data berita berdasarkan kategori
-                                                    $query_berita = mysqli_query($koneksi, "SELECT * FROM `berita` WHERE `id_kategori` = '$id_kategori'");
-                                                    while ($data_berita = mysqli_fetch_assoc($query_berita)) {
-                                                        // Tampilkan berita dalam kartu
-                                                        $judul_berita = $data_berita['judul'];
-                                                        $gambar_berita = $data_berita['gambar'];
-                                                    ?>
+                                                if (mysqli_num_rows($query) > 0) {
+                                                    while ($data = mysqli_fetch_array($query)) {
+                                                ?>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="single-what-news mb-100">
                                                                 <div class="what-img">
-                                                                    <img src="admin/berita/<?php echo $gambar_berita; ?>" alt="">
+                                                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 50vh; height: 40vh;" alt="">
                                                                 </div>
                                                                 <div class="what-cap">
-                                                                    <span class="color1"><?php echo $kategori; ?></span>
-                                                                    <h4><a href="#"><?php echo $judul_berita; ?></a></h4>
+                                                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                                                    <h4>
+                                                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4></a>
+                                                                    </h4>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    <?php } ?>
-                                                </div>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
                                             </div>
                                         </div>
-                                    <?php } ?>
+                                    </div>
                                 </div>
                                 <!-- End Nav Card -->
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle mb-40">
-                            <h3>Follow Us</h3>
-                        </div>
-                        <!-- Flow Socail -->
-                        <div class="single-follow mb-45">
-                            <div class="single-box">
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- New Poster -->
-                        <div class="news-poster d-none d-lg-block">
-                            <img src="assets/img/news/news_card.jpg" alt="">
-                        </div>
-                    </div>
+                    <?php include "followus.html" ?>
                 </div>
             </div>
         </section>
         <!-- Whats New End -->
-
-
         <!--Start pagination -->
         <div class="pagination-area pb-45 text-center">
             <div class="container">
@@ -199,11 +135,47 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
+                                    <?php if (isset($_GET['Semua'])) { ?>
+                                        <li class="page-item">
+                                            <a class="page-link<?php if ($queryy > 1) {
+                                                                    echo " text-danger";
+                                                                } ?>" <?php if ($queryy > 1) {
+                                                                                                                        echo "href='?Semua=$previous'";
+                                                                                                                    } ?>>
+                                                <span class="fas fa-arrow-left"></span>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                    <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                                        <?php if ($queryy == $i) { ?>
+                                            <?php if (isset($_GET['Semua'])) { ?>
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="?Semua=<?= $i ?>" style="color: red">
+                                                        <?= $i; ?>
+                                                    </a>
+                                                </li>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <?php if (isset($_GET['Semua'])) { ?>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?Semua=<?= $i ?>">
+                                                        <?= $i; ?>
+                                                    </a>
+                                                </li>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <?php if (isset($_GET['Semua'])) { ?>
+                                        <li class="page-item">
+                                            <a class="page-link<?php if ($queryy < $pages) {
+                                                                    echo " text-danger";
+                                                                } ?>" <?php if ($queryy < $pages) {
+                                                                                                                            echo "href='?Semua=$next'";
+                                                                                                                        } ?>>
+                                                <span class="fas fa-arrow-right"></span>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </nav>
                         </div>
@@ -211,6 +183,9 @@ $query_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                 </div>
             </div>
         </div>
+
+
+
         <!-- End pagination  -->
     </main>
 

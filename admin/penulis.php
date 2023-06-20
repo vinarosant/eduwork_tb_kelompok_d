@@ -4,14 +4,24 @@ $halaman = "Data Penulis";
 if (isset($_POST['SimpanPenulis'])) {
   $id_penulis = $_POST['id_penulis'];
   $nama = $_POST['nama'];
-  mysqli_query($koneksi, "INSERT INTO penulis VALUES('$id_penulis','$nama')");
+  $penulis_username = $_POST['penulis_username'];
+  $password = password_hash($_POST['penulis_password'], PASSWORD_DEFAULT);
+  mysqli_query($koneksi, "INSERT INTO penulis VALUES('$id_penulis','$nama','$penulis_username','$password')");
   header("location:penulis.php?pesan=input");
 }
 if (isset($_POST['EditPenulis'])) {
   $id_penulis = $_POST['id_penulis'];
+  $cek = mysqli_fetch_array(mysqli_query($koneksi,"SELECT * FROM penulis WHERE id_penulis='$id_penulis'"));
   $nama = $_POST['nama'];
+  $penulis_username = $_POST['penulis_username'];
+  $newpass = $_POST['newpassword'];
+  if(!empty($newpass)){
+    $password = password_hash($newpass, PASSWORD_DEFAULT);
+  }else{
+    $password = $cek['penulis_password'];
+  }
 
-  mysqli_query($koneksi, "UPDATE penulis SET nama='$nama' WHERE id_penulis='$id_penulis'");
+  mysqli_query($koneksi, "UPDATE penulis SET nama='$nama', penulis_username='$penulis_username', penulis_password='$password' WHERE id_penulis='$id_penulis'");
   header("location:penulis.php?pesan=edit");
 }
 if (isset($_GET['id_penulis'])) {
@@ -102,6 +112,7 @@ if (isset($_GET['id_penulis'])) {
                   <tr>
                     <th>No</th>
                     <th>Nama Penulis</th>
+                    <th>Username</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -114,9 +125,10 @@ if (isset($_GET['id_penulis'])) {
                     <tr>
                       <td><?= $no++; ?></td>
                       <td><?= $d['nama']; ?></td>
+                      <td><?= $d['penulis_username']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editpenulis<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deletepenulis<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editpenulis<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deletepenulis<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 
@@ -145,6 +157,15 @@ if (isset($_GET['id_penulis'])) {
                                   <div class="form-group">
                                     <label for="nama">Nama Penulis</label>
                                     <input type="text" class="form-control" id="nama" value="<?= $row['nama']; ?>" name="nama" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Username">Username Penulis</label>
+                                    <input type="text" class="form-control" id="penulis_username" value="<?= $row['penulis_username']; ?>" name="penulis_username" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="password">Password Penulis</label>
+                                    <input type="password" class="form-control" name="newpassword" required>
+                                    <small>Abaikan jika tidak merubah password</small>
                                   </div>
                                   <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -190,6 +211,7 @@ if (isset($_GET['id_penulis'])) {
                 <tfoot>
                   <th>No</th>
                   <th>Nama Penulis</th>
+                  <th>Username</th>
                   <th>Action</th>
                 </tfoot>
               </table>
@@ -216,6 +238,14 @@ if (isset($_GET['id_penulis'])) {
                 <div class="form-group">
                   <label for="nama">Nama Penulis</label>
                   <input type="text" class="form-control" id="nama" name="nama" required>
+                </div>
+                <div class="form-group">
+                  <label for="">Username Penulis</label>
+                  <input type="text" name="penulis_username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="">Password Penulis</label>
+                  <input type="password" name="penulis_password" class="form-control" required>
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

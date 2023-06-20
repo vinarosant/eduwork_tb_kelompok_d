@@ -20,13 +20,6 @@
                                     <li><?php echo date('l, jS F, Y'); ?></li>
                                 </ul>
                             </div>
-                            <div class="header-info-right">
-                                <ul class="header-social">
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
                             <div>
                                 <ul>
                                     <li><a href="#" class="btn login-btn" data-toggle="modal" data-target="#loginModal"><i class="fas fa-sign-in-alt"></i> Login</a></li>
@@ -42,7 +35,7 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="index.php"><img src="assets/img/logo/logo1.png" alt=""></a>
+                                <a href="index.php"><img src="assets/img/logo/logoo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9">
@@ -66,7 +59,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="index.php">Home</a></li>
-                                        <li><a href="categori.php">Category</a></li>
+                                        <li><a href="categori.php?Semua">Category</a></li>
                                         <li><a href="about.php">About</a></li>
                                         <li><a href="latest_news.php">Latest News</a></li>
                                     </ul>

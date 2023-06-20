@@ -34,109 +34,98 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Top -->
+                            <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
-                                    <img src="assets/img/trending/tiketbola.jpg" alt="">
+                                    <img src="admin/berita/<?php echo $data['gambar'] ?>" alt="">
                                     <div class="trend-top-cap">
                                         <span>Trending</span>
-                                        <h2><a href="details.php">Syarat dan Ketentuan Beli Tiket : <br> Timnas Indonesia Vs Argentina</a></h2>
+                                        <h2><a href="details.php?id=<?php echo $data['id']; ?>"><?php echo $data['judul'] ?></a></h2>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <!-- Trending Bottom -->
                             <div class="trending-bottom">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
+                            <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Kesehatan' LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="assets/img/trending/trending_bottom1.jpg" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" style="height: 21vh;" alt="">
+                                                            
                                             </div>
                                             <div class="trend-bottom-cap">
-                                                <span class="color1">Lifestyple</span>
-                                                <h4><a href="details.php">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
+                                                <span class="color1">Kesehatan</span>
+                                                <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
+                                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Olahraga' LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="assets/img/trending/trending_bottom2.jpg" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" style="height: 21vh;" alt="">
                                             </div>
                                             <div class="trend-bottom-cap">
-                                                <span class="color2">Sports</span>
-                                                <h4>
-                                                    <h4><a href="details.php">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
-                                                </h4>
+                                                <span class="color2">Olahraga</span>
+                                                    <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
+                                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` WHERE `kategori`.`kategori` = 'Pendidikan' LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="assets/img/trending/trending_bottom3.jpg" alt="">
+                                            <img src="admin/berita/<?= $data["gambar"]; ?>" style="height: 21vh;" alt="">
                                             </div>
                                             <div class="trend-bottom-cap">
-                                                <span class="color3">Travels</span>
-                                                <h4><a href="details.php"> Welcome To The Best Model Winner Contest</a></h4>
+                                                <span class="color3">Pendidikan</span>
+                                                <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                         <!-- Riht content -->
                         <div class="col-lg-4">
+                        <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 4");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="assets/img/trending/right1.jpg" alt="">
+                                <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 120px; height: 100px;" alt="">
                                 </div>
                                 <div class="trand-right-cap">
-                                    <span class="color1">Concert</span>
-                                    <h4><a href="details.php">Link Beli Tiket Konser Coldplay</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                    <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                 </div>
                             </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right2.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color3">sea beach</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right3.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color2">Bike Show</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right4.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color4">See beach</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="assets/img/trending/right5.jpg" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color1">Skeping</span>
-                                    <h4><a href="details.php">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--   Weekly2-News start -->
+        
         <div class="weekly2-news-area  weekly2-pading gray-bg">
             <div class="container" style="margin-top: -70px;">
                 <div class="weekly2-wrapper">
@@ -148,58 +137,84 @@ include 'admin/koneksi.php';
                             </div>
                         </div>
                     </div>
+                    <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="weekly2-news-active dot-style d-flex dot-style">
                                 <div class="weekly2-single">
+                                
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News1.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News2.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Event night</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News3.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News4.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Event time</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                                 <div class="weekly2-single">
+                                <?php 
+                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 1");
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
                                     <div class="weekly2-img">
-                                        <img src="assets/img/news/weekly2News4.jpg" alt="">
+                                    <img src="admin/berita/<?= $data["gambar"]; ?>" style="width: 280px; height: 180px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <p><?= $data["tgl_publish"]; ?></p>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
@@ -207,6 +222,7 @@ include 'admin/koneksi.php';
                 </div>
             </div>
         </div>
+        
         <!-- End Weekly-News -->
         <!--  Recent Articles start -->
         <div class="recent-articles">
@@ -223,16 +239,21 @@ include 'admin/koneksi.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
+                            <?php
+                        $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY tgl_publish DESC LIMIT 5");
+                            if (mysqli_num_rows($query) > 0) {
+                                while ($data = mysqli_fetch_array($query)) {
+                            ?>
                                 <div class="single-recent mb-100">
                                     <div class="what-img">
-                                        <img src="assets/img/news/recent1.jpg" alt="">
+                                        <img src="admin/berita/<?= $data["gambar"]; ?>" alt="" style="width: 50vh; height: 40vh;">
                                     </div>
                                     <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                        <span class="color1"><?= $data["kategori"] ?></span>
+                                        <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
                                 </div>
-                                <div class="single-recent mb-100">
+                                <!-- <div class="single-recent mb-100">
                                     <div class="what-img">
                                         <img src="assets/img/news/recent2.jpg" alt="">
                                     </div>
@@ -257,8 +278,13 @@ include 'admin/koneksi.php';
                                     <div class="what-cap">
                                         <span class="color1">Night party</span>
                                         <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
+                                    </div> -->
+                                    <?php
+                                }
+                            }
+                            ?>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -267,25 +293,6 @@ include 'admin/koneksi.php';
         </div>
         <!--Recent Articles End -->
         <!--Start pagination -->
-        <div class="pagination-area pb-45 text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="single-wrap d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- End pagination  -->
     </main>
 

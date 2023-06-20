@@ -2,18 +2,24 @@
 include 'koneksi.php';
 $halaman = "Data Admin";
 if (isset($_POST['SimpanAdmin'])) {
-  $id_admin = $_POST['id_admin'];
   $username = $_POST['username'];
   $password = $_POST['password'];
-  mysqli_query($koneksi, "INSERT INTO `admin` VALUES('$id_admin','$username','$password')");
+  $new = password_hash($password, PASSWORD_DEFAULT);
+  mysqli_query($koneksi, "INSERT INTO `admin` VALUES('','$username','$new')");
   header("location:admin.php?pesan=input");
 }
 if (isset($_POST['EditAdmin'])) {
   $id_admin = $_POST['id_admin'];
+  $cek = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM admin WHERE id_admin = '$id_admin'"));
   $username = $_POST['username'];
-  $password = $_POST['password'];
+  $pass = $_POST['newpassword'];
+  if(!empty($pass)){
+    $newpass = password_hash($pass, PASSWORD_DEFAULT);
+  }else{
+    $newpass = $cek['password'];
+  }
 
-  mysqli_query($koneksi, "UPDATE `admin` SET username='$username', password='$password' WHERE id_admin='$id_admin'");
+  mysqli_query($koneksi, "UPDATE `admin` SET username='$username', password='$newpass' WHERE id_admin='$id_admin'");
   header("location:admin.php?pesan=edit");
 }
 if (isset($_GET['id_admin'])) {
@@ -120,8 +126,8 @@ if (isset($_GET['id_admin'])) {
                       <td><?= $d['username']; ?></td>
                       <td><?= $d['password']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editadmin<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deleteadmin<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editadmin<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deleteadmin<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 
@@ -153,7 +159,8 @@ if (isset($_GET['id_admin'])) {
                                   </div>
                                   <div class="form-group">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="password" value="<?= $row['password']; ?>" name="password" required>
+                                    <input type="password" class="form-control" name="newpassword">
+                                    <small>Abaikan jika tidak merubah password</small>
                                   </div>
                                   <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
