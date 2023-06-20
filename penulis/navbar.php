@@ -48,7 +48,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button id="nodelete" type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
-        <a href="../index.php" class="btn btn-info">Logout</a>
+        <a href="../admin/logout.php" class="btn btn-info">Logout</a>
       </div>
     </div>
     <!-- /.modal-content -->

@@ -1,6 +1,6 @@
 <?php
 $query_berita = mysqli_query($koneksi, 
-"SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY jmlh DESC");
+"SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY jmlh DESC LIMIT 5");
 ?>
 <div class="row">
     <div class="col-lg-12">

@@ -108,7 +108,10 @@ $halaman = "Home";
                         <div class="col-lg-4">
 
                             <?php
-                            $query = mysqli_query($koneksi, "SELECT * FROM `berita` JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori` ORDER BY RAND() LIMIT 5");
+                            $query = mysqli_query($koneksi, "
+                            SELECT * FROM `berita` JOIN `like` ON `berita`.`id` = `like`.`id_berita` 
+                            JOIN `kategori` ON `berita`.`id_kategori` = `kategori`.`id_kategori`
+                            ORDER BY `jumlah_like` DESC LIMIT 5");
 
                             while ($data = mysqli_fetch_assoc($query)) {
                             ?>
@@ -118,6 +121,7 @@ $halaman = "Home";
                                     </div>
                                     <div class="trand-right-cap">
                                         <span class="color1"><?= $data["kategori"]; ?></span>
+                                        <span>Most Likes</span>
                                         <h4><a href="details.php?id=<?= $data["id"]; ?>"><?= $data["judul"]; ?></a></h4>
                                     </div>
                                 </div>
