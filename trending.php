@@ -1,7 +1,6 @@
 <?php
 $query_berita = mysqli_query($koneksi, 
-"SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY jmlh DESC");
-$query_likes = mysqli_query($koneksi,"SELECT * FROM `like`");
+"SELECT *, COUNT(id_berita) AS jmlh FROM komentar JOIN berita ON komentar.id_berita = berita.id GROUP BY id_berita ORDER BY jmlh DESC LIMIT 5");
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -24,20 +23,4 @@ $query_likes = mysqli_query($koneksi,"SELECT * FROM `like`");
             </div>
         </div>
     </div>
-    <!-- <div class="col-lg-12">
-        <div class="trending-tittle">
-            <strong>Most Likes</strong>
-            <div class="trending-animated">
-                <ul id="js-news" class="js-hidden">
-                    
-                        <li class='news-item'>
-                        <a href="">
-                        asdasdsadas
-                        </a>
-                        </li>
-                    
-                </ul>
-            </div>
-        </div>
-    </div> -->
 </div>
