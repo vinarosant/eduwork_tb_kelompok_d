@@ -1,14 +1,14 @@
 <?php
 include 'admin/koneksi.php';
-
 include 'pagination.php';
+$halaman = "Kategori";
 ?>
 
 
 <!doctype html>
 <html lang="zxx">
 
-<?php include "head.html" ?>
+<?php include "head.php" ?>
 
 <body>
 
@@ -83,15 +83,15 @@ include 'pagination.php';
                                                 if (isset($_GET['Semua'])) {
                                                     $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori ORDER BY RAND() LIMIT $start,$perpage");
                                                 } else if (isset($_GET['Kesehatan'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Kesehatan' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Kesehatan'");
                                                 } else if (isset($_GET['Olahraga'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Olahraga' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Olahraga'");
                                                 } else if (isset($_GET['Pendidikan'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Pendidikan' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Pendidikan'");
                                                 } else if (isset($_GET['Politik'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Politik'");
                                                 } else if (isset($_GET['MakananMinuman'])) {
-                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman' LIMIT $start,$perpage");
+                                                    $query = $koneksi->query("SELECT * FROM berita JOIN kategori ON berita.id_kategori = kategori.id_kategori WHERE kategori.kategori = 'Makanan dan Minuman'");
                                                 }
 
                                                 if (mysqli_num_rows($query) > 0) {
@@ -129,64 +129,65 @@ include 'pagination.php';
         <!-- Whats New End -->
         <!--Start pagination -->
         <div class="pagination-area pb-45 text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="single-wrap d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <?php if (isset($_GET['Semua'])) { ?>
-                                        <li class="page-item">
-                                            <a class="page-link<?php if ($queryy > 1) {
-                                                                    echo " text-danger";
-                                                                } ?>" <?php if ($queryy > 1) {
-                                                                                                                        echo "href='?Semua=$previous'";
-                                                                                                                    } ?>>
-                                                <span class="fas fa-arrow-left"></span>
-                                            </a>
-                                        </li>
-                                    <?php } ?>
-                                    <?php for ($i = 1; $i <= $pages; $i++) { ?>
-                                        <?php if ($queryy == $i) { ?>
-                                            <?php if (isset($_GET['Semua'])) { ?>
-                                                <li class="page-item active">
-                                                    <a class="page-link" href="?Semua=<?= $i ?>" style="color: red">
-                                                        <?= $i; ?>
-                                                    </a>
-                                                </li>
-                                            <?php } ?>
-                                        <?php } else { ?>
-                                            <?php if (isset($_GET['Semua'])) { ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="?Semua=<?= $i ?>">
-                                                        <?= $i; ?>
-                                                    </a>
-                                                </li>
+            <div class="pagination-area pb-45 text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="single-wrap d-flex justify-content-center">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-start">
+                                        <?php if (isset($_GET['Semua'])) { ?>
+                                            <li class="page-item<?php if ($queryy == 1) {
+                                                                    echo " active";
+                                                                } ?>">
+                                                <a class="page-link<?php if ($queryy > 1) {
+                                                                        echo " text-danger";
+                                                                    } ?>" <?php if ($queryy > 1) {
+                                                                                                                            echo "href='?Semua=$previous'";
+                                                                                                                        } ?>>
+                                                    <span class="fas fa-arrow-left"></span>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                        <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                                            <?php if ($queryy == $i) { ?>
+                                                <?php if (isset($_GET['Semua'])) { ?>
+                                                    <li class="page-item active">
+                                                        <a class="page-link" href="?Semua=<?= $i ?>" style="color: red">
+                                                            <?= $i; ?>
+                                                        </a>
+                                                    </li>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <?php if (isset($_GET['Semua'])) { ?>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="?Semua=<?= $i ?>">
+                                                            <?= $i; ?>
+                                                        </a>
+                                                    </li>
+                                                <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
-                                    <?php if (isset($_GET['Semua'])) { ?>
-                                        <li class="page-item">
-                                            <a class="page-link<?php if ($queryy < $pages) {
-                                                                    echo " text-danger";
-                                                                } ?>" <?php if ($queryy < $pages) {
-                                                                                                                            echo "href='?Semua=$next'";
-                                                                                                                        } ?>>
-                                                <span class="fas fa-arrow-right"></span>
-                                            </a>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
-                            </nav>
+                                        <?php if (isset($_GET['Semua'])) { ?>
+                                            <li class="page-item">
+                                                <a class="page-link<?php if ($queryy < $pages) {
+                                                                        echo " text-danger";
+                                                                    } ?>" <?php if ($queryy < $pages) {
+                                                                                                                                echo "href='?Semua=$next'";
+                                                                                                                            } ?>>
+                                                    <span class="fas fa-arrow-right"></span>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-
-
-        <!-- End pagination  -->
+            <!-- End pagination  -->
     </main>
 
     <?php include "footer.html" ?>
