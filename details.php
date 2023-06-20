@@ -1,6 +1,6 @@
 <?php
 include 'admin/koneksi.php';
-$halaman = "The Art Of Publishing";
+
 $id_berita = $_GET['id'];
 
 // Query untuk mengambil data berita berdasarkan ID
@@ -21,10 +21,6 @@ $data_comment = mysqli_fetch_assoc($query_comment);
 
 $query_count_comment = mysqli_query($koneksi, "SELECT COUNT(*) AS jumlah_komentar FROM `komentar` WHERE `id_berita` = '$id_berita'");
 $jumlah_komentar = mysqli_fetch_assoc($query_count_comment);
-
-$query_jumlah_like = mysqli_query($koneksi, "SELECT `jumlah_like` FROM `like` WHERE `id_berita` = '$id_berita'");
-$data_jumlah_like = mysqli_fetch_assoc($query_jumlah_like);
-$jumlah_like = $data_jumlah_like['jumlah_like'];
 ?>
 
 
@@ -33,7 +29,7 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<?php include "head.php" ?>
+<?php include "head.html" ?>
 
 <body>
 
@@ -60,7 +56,7 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                 <div class="row">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
-                        <div class="about-right mb-20">
+                        <div class="about-right mb-90">
                             <div class="section-tittle mb-30 pt-30">
                                 <h2><?php echo $judul_berita ?></h2>
                             </div>
@@ -89,120 +85,32 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                     </ul>
                                 </div>
                             </div>
-                            <?php 
-                            if(!empty(isset($_SESSION['id_user']))){
-                            ?>
-                            <div class="socail-share pt-30">
-                                <div class="section-tittle">
-                                    <ul>
-                                        <li>
-                                            <a href="#" onclick="addLike(<?php echo $id_berita; ?>)">
-                                                <i id="heartIcon" class="fas fa-heart fa-lg" style="color: #8b9098;"></i>
-                                            </a>
-                                            <span id="jumlahLike">
-                                                <?php
-                                                    if ($jumlah_like > 0) {
-                                                        echo $jumlah_like;
-                                                    } else {
-                                                        echo "0" ;
-                                                    }
-                                                ?>
-                                            </span> Suka 
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        <?php } ?>
-                        <?php if(!empty($_SESSION['id_berita'])){
-                            $oldberita = $_SESSION['id_berita'];
-                        } ?>
-                            <script>
-                                <?php if(!empty($oldberita)){ ?>
-                                var old = <?php echo $oldberita ?>;
-                                <?php }else{ ?>
-                                var old = "";
-                                <?php } ?>
-                                var count = 0;
-                               
-                                function addLike(id_berita) {
-                                    event.preventDefault();
-                                    
-                                    var xhr = new XMLHttpRequest();
-                                    var url = "addlike.php?id=" + id_berita;
-                                    var id = id_berita;
-                                    if(count<=0 && id!=old){
-                                        xhr.open("GET", url, true);
-                                        count++;
-                                    }
-                                   
-
-                                    xhr.onreadystatechange = function() {
-                                        if (xhr.readyState === XMLHttpRequest.DONE) {
-                                            if (xhr.status === 200) {
-                                                console.log("Suka berhasil ditambahkan");
-                                                var heartIcon = document.getElementById("heartIcon");
-                                                heartIcon.style.color = "red";
-                                                updateLikeCount(id_berita); 
-                                                count++;
-                                            } else {
-                                                console.log("Gagal menambahkan suka");
-                                            }
-                                        }
-                                    };
-                                    xhr.send();
-                                }
-
-                                function updateLikeCount(id_berita) {
-                                    var xhr = new XMLHttpRequest();
-                                    var url = "getlikecount.php?id=" + id_berita;
-                                    xhr.open("GET", url, true);
-
-                                    xhr.onreadystatechange = function() {
-                                        if (xhr.readyState === XMLHttpRequest.DONE) {
-                                            if (xhr.status === 200) {
-                                                var jumlahLikeElement = document.getElementById("jumlahLike");
-                                                jumlahLikeElement.innerHTML = xhr.responseText;
-                                            } else {
-                                                console.log("Gagal memperbarui jumlah like");
-                                            }
-                                        }
-                                    };
-                                    xhr.send();
-                                }
-                            </script>
-
                         </div>
                         <!-- From -->
                         <div class="comments-area">
                             <h4><?php echo $jumlah_komentar['jumlah_komentar'] ?> Comments</h4>
-                            <?php
-                            $data = mysqli_query($koneksi, "SELECT * FROM komentar WHERE id_berita = '$id_berita' ");
-                            if (!empty($data)) {
-                                while ($d = mysqli_fetch_array($data)) { ?>
-                                    <div class="comment-list">
-                                        <div class="single-comment justify-content-between d-flex">
-                                            <div class="user justify-content-between d-flex">
-                                                <div class="thumb">
-                                                    <img src="assets/img/comment/default_avatar.png" alt="">
-                                                </div>
-                                                <div class="desc">
-                                                    <p class="comment">
-                                                        <?php echo $d['komentar'] ?>
-                                                    </p>
-                                                    <div class="d-flex justify-content-between">
-                                                        <div class="d-flex align-items-center">
-                                                            <h5>
-                                                                <a href="#"><?php echo ucfirst($d['nama_pengirim']) ?></a>
-                                                            </h5>
-                                                            <p class="date"><?php echo date('l, j F Y, H:i', strtotime($d['tgl_komentar'])) ?></p>
-                                                        </div>
-                                                    </div>
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="assets/img/comment/default_avatar.png" alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <p class="comment">
+                                                <?php echo $data_comment['komentar'] ?>
+                                            </p>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <h5>
+                                                        <a href="#"><?php echo ucfirst($data_comment['nama_pengirim']) ?></a>
+                                                    </h5>
+                                                    <p class="date"><?php echo date('l, j F Y, H:i', strtotime($data_comment['komentar'])) ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                            <?php }
-                            } ?>
+                                </div>
+                            </div>
                             <div class="comment-form">
                                 <h4>Leave a Reply</h4>
                                 <form class="form-contact comment_form" action="add_comment.php?id=<?php echo $id_berita; ?>" method="post" id="commentForm">
@@ -212,9 +120,14 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                                 <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 mt-1">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
@@ -225,48 +138,99 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                             </div>
                         </div>
                     </div>
-                    <?php include 'followus.html' ?>
-                    <div class="blog_right_sidebar mt-50">
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Related News</h3>
-                            <?php
-                            $id_berita = $_GET['id'];
-
-                            $query = mysqli_query($koneksi, "SELECT b.id_kategori FROM berita b WHERE b.id = $id_berita");
-
-                            if ($query) {
-                                if (mysqli_num_rows($query) > 0) {
-                                    $row = mysqli_fetch_assoc($query);
-                                    $id_kategori = $row['id_kategori'];
-
-                                    $sql_related = "SELECT b.id, b.judul, b.tgl_publish, b.gambar FROM berita b WHERE b.id_kategori = $id_kategori AND b.id != $id_berita LIMIT 4";
-                                    $result_related = mysqli_query($koneksi, $sql_related);
-
-                                    while ($row_related = mysqli_fetch_assoc($result_related)) {
-                                        $id_berita_related = $row_related['id'];
-                                        $judul = $row_related['judul'];
-                                        $tgl_publish = $row_related['tgl_publish'];
-                                        $gambar = $row_related['gambar'];
-                            ?>
-                                        <div class="media post_item">
-                                            <img src="admin/berita/<?php echo $gambar; ?>" alt="post" style="width: 10vh; height: 8vh;">
-                                            <div class="media-body">
-                                                <a href="details.php?id=<?php echo $id_berita_related; ?>">
-                                                    <h3><?php echo $judul; ?></h3>
-                                                </a>
-                                                <p><?php echo date('l, j F Y', strtotime($tgl_publish)); ?></p>
-                                            </div>
-                                        </div>
-                            <?php
-                                    }
-                                }
-                            }
-                            ?>
-                        </aside>
+                    <div class="col-lg-4">
+                        <div class="section-tittle mb-40">
+                            <h3>Follow Us</h3>
+                        </div>
+                        <!-- Flow Socail -->
+                        <div class="single-follow mb-45">
+                            <div class="single-box">
+                                <div class="follow-us d-flex align-items-center">
+                                    <div class="follow-social">
+                                        <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
+                                    </div>
+                                    <div class="follow-count">
+                                        <span>8,045</span>
+                                        <p>Fans</p>
+                                    </div>
+                                </div>
+                                <div class="follow-us d-flex align-items-center">
+                                    <div class="follow-social">
+                                        <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
+                                    </div>
+                                    <div class="follow-count">
+                                        <span>8,045</span>
+                                        <p>Fans</p>
+                                    </div>
+                                </div>
+                                <div class="follow-us d-flex align-items-center">
+                                    <div class="follow-social">
+                                        <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
+                                    </div>
+                                    <div class="follow-count">
+                                        <span>8,045</span>
+                                        <p>Fans</p>
+                                    </div>
+                                </div>
+                                <div class="follow-us d-flex align-items-center">
+                                    <div class="follow-social">
+                                        <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
+                                    </div>
+                                    <div class="follow-count">
+                                        <span>8,045</span>
+                                        <p>Fans</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- New Poster -->
+                        <div class="news-poster d-none d-lg-block">
+                            <img src="assets/img/news/news_card.jpg" alt="">
+                        </div>
+                        <div class="blog_right_sidebar mt-50">
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">Related News</h3>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_1.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>From life was you fish...</h3>
+                                        </a>
+                                        <p>January 12, 2019</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_2.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>The Amazing Hubble</h3>
+                                        </a>
+                                        <p>02 Hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_3.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>Astronomy Or Astrology</h3>
+                                        </a>
+                                        <p>03 Hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img src="assets/img/post/post_4.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>Asteroids telescope</h3>
+                                        </a>
+                                        <p>01 Hours ago</p>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         <!-- About US End -->
     </main>
@@ -276,7 +240,6 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
     <!-- JS here -->
 
     <!-- All JS Custom Plugins Link Here here -->
-    <script src="https://kit.fontawesome.com/51a6add3f1.js" crossorigin="anonymous"></script>
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 
     <!-- Jquery, Popper, Bootstrap -->

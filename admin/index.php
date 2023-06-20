@@ -2,11 +2,6 @@
 include "koneksi.php";
 $halaman = "Data Berita";
 
-session_start();
-if(empty($_SESSION['username'])){
-  header("location:../index.php");
-}
-
 if (isset($_POST['SimpanBerita'])) {
   $judul = $_POST['judul'];
   $tgl_publish = $_POST['tgl_publish'];
@@ -180,7 +175,7 @@ if (isset($_GET['id'])) {
               ?>
               <div class="row no-print">
                 <div class="col-12">
-                  <!-- <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputberita"><i class="far fa-plus-square"></i> Tambah Data</a> -->
+                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputberita"><i class="far fa-plus-square"></i> Tambah Data</a>
                 </div>
               </div>
               <br>
@@ -200,11 +195,10 @@ if (isset($_GET['id'])) {
                 <tbody>
                   <?php
                   $data = mysqli_query($koneksi, "SELECT * FROM `berita` 
-                  LEFT JOIN kategori ON `kategori`.`id_kategori`=`berita`.`id_kategori`
-                  LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`");
+                      LEFT JOIN kategori ON `kategori`.`id_kategori`=`berita`.`id_kategori`
+                      LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`");
                   $no = 1;
                   while ($d = mysqli_fetch_array($data)) {
-                    $isi_berita = strlen($d['isi']) > 100 ? substr($d['isi'], 0, 100) . "..." : $d['isi'];
                   ?>
                     <tr>
                       <td><?= $no++; ?></td>
@@ -213,57 +207,15 @@ if (isset($_GET['id'])) {
                       </td>
                       <td><?= $d['judul']; ?></td>
                       <td><?= $d['tgl_publish']; ?></td>
-                      <td>
-                        <span class="content-toggle">
-                          <span class="content-preview"><?= $isi_berita; ?></span>
-                          <?php if (strlen($d['isi']) > 100) : ?>
-                            <span class="content-full" style="display: none;"><?= $d['isi']; ?></span>
-                            <a href="#" class="show-more">More</a>
-                            <a href="#" class="show-less" style="display: none;">Less</a>
-                          <?php endif; ?>
-                        </span>
-                      </td>
+                      <td><?= $d['isi']; ?></td>
                       <td><?= $d['kategori']; ?></td>
                       <td><?= $d['nama']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editberita<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
-                        <a href="" data-toggle="modal" data-target="#deleteberita<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
+                        <a href="" data-toggle="modal" data-target="#editberita<?php echo $no; ?>" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        <a href="" data-toggle="modal" data-target="#deleteberita<?php echo $no; ?>" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
 
-                    <script>
-                      var showMoreButtons = document.getElementsByClassName("show-more");
-                      Array.prototype.forEach.call(showMoreButtons, function(button) {
-                        button.addEventListener('click', function() {
-                          var contentToggle = this.parentNode; 
-                          var contentPreview = contentToggle.getElementsByClassName("content-preview")[0];
-                          var contentFull = contentToggle.getElementsByClassName("content-full")[0];
-                          var showLessButton = contentToggle.getElementsByClassName("show-less")[0];
-
-                          contentPreview.style.display = "none";
-                          contentFull.style.display = "inline";
-
-                          this.style.display = "none";
-                          showLessButton.style.display = "inline";
-                        });
-                      });
-
-                      var showLessButtons = document.getElementsByClassName("show-less");
-                      Array.prototype.forEach.call(showLessButtons, function(button) {
-                        button.addEventListener('click', function() {
-                          var contentToggle = this.parentNode; // Ambil elemen konten (span.content-toggle)
-                          var contentPreview = contentToggle.getElementsByClassName("content-preview")[0];
-                          var contentFull = contentToggle.getElementsByClassName("content-full")[0];
-                          var showMoreButton = contentToggle.getElementsByClassName("show-more")[0];
-
-                          contentPreview.style.display = "inline";
-                          contentFull.style.display = "none";
-
-                          showMoreButton.style.display = "inline";
-                          this.style.display = "none";
-                        });
-                      });
-                    </script>
                     <div class="modal fade" id="editberita<?php echo $no; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -303,7 +255,7 @@ if (isset($_GET['id'])) {
                                   </div>
                                   <div class="form-group">
                                     <label for="Isi">Isi</label>
-                                    <textarea name="isi" class="form-control" rows="20" col="10"><?= $row['isi']; ?></textarea>
+                                    <input type="text" class="form-control" value="<?= $row['isi']; ?>" name="isi" required>
                                   </div>
                                   <div class="form-group">
                                     <label for="Kategori">Kategori</label>
@@ -422,7 +374,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="form-group">
                   <label for="Isi">Isi</label>
-                  <textarea name="isi" class="form-control" cols="30" rows="10" required></textarea>
+                  <input type="text" class="form-control" id="isi" name="isi" required>
                 </div>
                 <div class="form-group">
                   <label for="Kategori">Kategori</label>

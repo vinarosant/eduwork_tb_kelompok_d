@@ -11,7 +11,17 @@
     <!-- Sidebar user panel (optional) -->
 
     <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
 
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -89,22 +99,6 @@
             <p>
               Data Admin
               <i class="right fas fa-angle-<?php if ($halaman == "Data Admin") {
-                                              echo "right";
-                                            } else {
-                                              echo "left";
-                                            } ?>"></i>
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="user.php" class="nav-link <?php if ($halaman == "Data User") {
-                                                echo "active";
-                                              } ?>">
-            <i class="nav-icon 	fas fa-user-cog"></i>
-            <p>
-              Data User
-              <i class="right fas fa-angle-<?php if ($halaman == "Data User") {
                                               echo "right";
                                             } else {
                                               echo "left";
