@@ -112,34 +112,34 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                     </ul>
                                 </div>
                             </div>
-                        <?php } ?>
-                        <?php if(!empty($_SESSION['id_berita'])){
+                        <?php } 
+                        if(isset($_SESSION['id_berita'])){
                             $oldberita = $_SESSION['id_berita'];
-                        } ?>
+                        }
+                        ?>
+                        
+                       
                             <script>
-                                <?php if(!empty($oldberita)){ ?>
+                               <?php if(!empty($oldberita)){ ?>
                                 var old = <?php echo $oldberita ?>;
                                 <?php }else{ ?>
-                                var old = "";
+                                var old = undefined;
                                 <?php } ?>
-                                var count = 0;
+                                var count = 1;
                                
                                 function addLike(id_berita) {
                                     event.preventDefault();
                                     
                                     var xhr = new XMLHttpRequest();
                                     var url = "addlike.php?id=" + id_berita;
+                                    var url2 = "dislike.php?id=" + id_berita;
                                     var id = id_berita;
-                                    if(count<=0 && id!=old){
+                                    if(count<=0 || count%2==1 && id!=old){
                                         xhr.open("GET", url, true);
-                                        count++;
-                                    }
-                                   
-
-                                    xhr.onreadystatechange = function() {
+                                        xhr.onreadystatechange = function() {
                                         if (xhr.readyState === XMLHttpRequest.DONE) {
                                             if (xhr.status === 200) {
-                                                console.log("Suka berhasil ditambahkan");
+                                                console.log(count);
                                                 var heartIcon = document.getElementById("heartIcon");
                                                 heartIcon.style.color = "red";
                                                 updateLikeCount(id_berita); 
@@ -149,6 +149,27 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                             }
                                         }
                                     };
+                                    }else if(count>1 || count%2!=0 && id!=old){
+                                        xhr.open("GET", url2, true);
+                                        xhr.onreadystatechange = function() {
+                                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                                            if (xhr.status === 200) {
+                                                console.log(count);
+                                                var heartIcon = document.getElementById("heartIcon");
+                                                heartIcon.style.color = "#8b9098";
+                                                updateLikeCount(id_berita); 
+                                                count++;
+                                            } else {
+                                                console.log("Gagal menambahkan suka");
+                                            }
+                                        }
+                                    };
+                                    }else{
+
+                                    }
+                                   
+
+                                    
                                     xhr.send();
                                 }
 
@@ -214,7 +235,12 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                         </div>
                                         <div class="col-sm-6 mt-1">
                                             <div class="form-group">
-                                                <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                                <?php if(isset($_SESSION['nama_user'])){?>
+                                                    <input class="form-control" name="name" id="name" type="text" value="<?= $_SESSION['nama_user']; ?>" readonly>
+                                                <?php }else{ ?>
+                                                    <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                                <?php } ?>
+                                                
                                             </div>
                                         </div>
                                     </div>

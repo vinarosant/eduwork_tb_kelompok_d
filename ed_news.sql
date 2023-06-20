@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2023 at 02:02 PM
+-- Generation Time: Jun 20, 2023 at 09:11 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -128,7 +128,9 @@ INSERT INTO `komentar` (`id_komentar`, `nama_pengirim`, `komentar`, `tgl_komenta
 (2, 'Dinda', 'Ngeri bgttt', '2023-06-12 13:42:33', 8),
 (3, 'gsgs', 'gsgsgs', '2023-06-12 13:43:13', 8),
 (4, 'Wawan', 'Situasi ini sangat mengkhawatirkan. Bagaimana bisa stok vaksin habis di tengah KLB rabies? Pemerintah harus lebih proaktif dalam mengantisipasi kebutuhan vaksin dan melindungi masyarakat serta hewan peliharaan', '2023-06-12 16:51:07', 6),
-(5, 'ujang', 'Sangat disayangkan melihat jumlah vaksin rabies yang terbatas di Sikka. Kesehatan dan keselamatan masyarakat harus menjadi prioritas utama. Harapannya, pemerintah dapat segera menyediakan pasokan vaksin yang memadai untuk mengendalikan KLB ini.', '2023-06-12 17:10:17', 6);
+(5, 'ujang', 'Sangat disayangkan melihat jumlah vaksin rabies yang terbatas di Sikka. Kesehatan dan keselamatan masyarakat harus menjadi prioritas utama. Harapannya, pemerintah dapat segera menyediakan pasokan vaksin yang memadai untuk mengendalikan KLB ini.', '2023-06-12 17:10:17', 6),
+(6, 'no name', 'sfs', '2023-06-20 18:34:08', 7),
+(7, 'fs', 'sfs', '2023-06-20 20:21:40', 9);
 
 -- --------------------------------------------------------
 
@@ -147,12 +149,16 @@ CREATE TABLE `like` (
 --
 
 INSERT INTO `like` (`id_like`, `jumlah_like`, `id_berita`) VALUES
-(73, 47, 7),
+(73, 52, 7),
 (74, 24, 5),
-(75, 34, 8),
+(75, 35, 8),
 (76, 5, 6),
-(77, 1, 17),
-(78, 3, 20);
+(77, 2, 17),
+(78, 3, 20),
+(79, 1, 18),
+(80, 3, 9),
+(81, 1, 10),
+(82, 0, 19);
 
 -- --------------------------------------------------------
 
@@ -276,13 +282,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `like`
 --
 ALTER TABLE `like`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `penulis`

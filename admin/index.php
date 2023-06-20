@@ -13,6 +13,7 @@ if (isset($_POST['SimpanBerita'])) {
   $isi = $_POST['isi'];
   $id_kategori = $_POST['id_kategori'];
   $id_penulis = $_POST['id_penulis'];
+  $id_like = $_POST['id_like'];
   $rand = rand();
   $ekstensi = array('png', 'jpg', 'jpeg', 'gif', 'webp');
   $filename = $_FILES['gambar']['name'];
@@ -26,7 +27,7 @@ if (isset($_POST['SimpanBerita'])) {
       move_uploaded_file($_FILES['gambar']['tmp_name'], 'berita/' . $rand . '_' . $filename);
       mysqli_query($koneksi, "INSERT INTO berita
 (judul,tgl_publish,isi,id_kategori,id_penulis,gambar) 
-VALUES ('$judul','$tgl_publish','$isi','$id_kategori','$id_penulis','$xx')");
+VALUES ('$judul','$tgl_publish','$isi','$id_kategori','$id_penulis','$id_like','$xx')");
       header("location:index.php?pesan=input");
     } else {
       header("location:index.php?pesan=gagalukuran");
@@ -41,6 +42,7 @@ if (isset($_POST['EditBerita'])) {
   $foto_baru = $_FILES['gambarnew']['name'];
   $id_kategori = $_POST['id_kategori'];
   $id_penulis = $_POST['id_penulis'];
+  $id_like = $_POST['id_like'];
 
   if ($foto_baru != "") {
     $ekstensi_diperbolehkan = array('png', 'jpg', 'jpeg', 'webp', 'gif');
@@ -64,6 +66,7 @@ if (isset($_POST['EditBerita'])) {
                    gambar = '$nama_gambar_baru', 
                    id_kategori = '$id_kategori', 
                    id_penulis = '$id_penulis'
+                   id_like = '$id_like'
                    WHERE id = '$id'
                    ";
       $result = mysqli_query($koneksi, $query);
@@ -190,6 +193,7 @@ if (isset($_GET['id'])) {
                     <th>No</th>
                     <th>Gambar</th>
                     <th>Judul</th>
+                    <th>Jumlah Like</th>
                     <th>Tanggal</th>
                     <th>Isi</th>
                     <th>Kategori</th>
@@ -201,7 +205,8 @@ if (isset($_GET['id'])) {
                   <?php
                   $data = mysqli_query($koneksi, "SELECT * FROM `berita` 
                   LEFT JOIN kategori ON `kategori`.`id_kategori`=`berita`.`id_kategori`
-                  LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`");
+                  LEFT JOIN penulis ON `penulis`.`id_penulis`=`berita`.`id_penulis`
+                  LEFT JOIN `like` ON `like`.`id_berita` = `berita`.`id`");
                   $no = 1;
                   while ($d = mysqli_fetch_array($data)) {
                     $isi_berita = strlen($d['isi']) > 100 ? substr($d['isi'], 0, 100) . "..." : $d['isi'];
@@ -212,6 +217,7 @@ if (isset($_GET['id'])) {
                         <img src="berita/<?= $d['gambar']; ?>" width="120" height="120">
                       </td>
                       <td><?= $d['judul']; ?></td>
+                      <td><?= $d['jumlah_like']; ?></td>
                       <td><?= $d['tgl_publish']; ?></td>
                       <td>
                         <span class="content-toggle">
@@ -298,6 +304,10 @@ if (isset($_GET['id'])) {
                                     <input type="text" class="form-control" value="<?= $row['judul']; ?>" name="judul" required>
                                   </div>
                                   <div class="form-group">
+                                    <label for="Jumlah Like">Jumlah Like</label>
+                                    <input type="text" class="form-control" value="<?= $row['jumlah_like']; ?>" name="jumlah_like" required>
+                                  </div>
+                                  <div class="form-group">
                                     <label for="Tanggal">Tanggal</label>
                                     <input type="datetime-local" class="form-control" value="<?= $row['tgl_publish']; ?>" name="tgl_publish" required>
                                   </div>
@@ -377,6 +387,7 @@ if (isset($_GET['id'])) {
                   <th>No</th>
                   <th>Gambar</th>
                   <th>Judul</th>
+                  <th>Jumlah Like</th>
                   <th>Tanggal</th>
                   <th>Isi</th>
                   <th>Kategori</th>
@@ -416,6 +427,10 @@ if (isset($_GET['id'])) {
                   <label for="Judul">Judul</label>
                   <input type="text" class="form-control" id="judul" name="judul" required>
                 </div>
+                <div class="form-group">
+                                    <label for="Jumlah Like">Jumlah Like</label>
+                                    <input type="text" class="form-control" id="jumlah_like" name="jumlah_like" required>
+                                  </div>
                 <div class="form-group">
                   <label for="Tanggal">Tanggal</label>
                   <input type="datetime-local" class="form-control" id="tanggal" name="tgl_publish" required>
@@ -541,3 +556,4 @@ if (isset($_GET['id'])) {
 </body>
 
 </html>
+
