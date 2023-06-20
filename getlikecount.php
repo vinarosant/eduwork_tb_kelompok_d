@@ -1,4 +1,5 @@
 <?php
+session_start();
 $id_berita = $_GET['id'];
 
 include 'admin/koneksi.php';

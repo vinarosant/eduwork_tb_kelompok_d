@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 19 Jun 2023 pada 15.58
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: Jun 20, 2023 at 02:02 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +35,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
@@ -43,7 +44,7 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita`
+-- Table structure for table `berita`
 --
 
 CREATE TABLE `berita` (
@@ -57,7 +58,7 @@ CREATE TABLE `berita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `berita`
+-- Dumping data for table `berita`
 --
 
 INSERT INTO `berita` (`id`, `judul`, `tgl_publish`, `isi`, `id_kategori`, `id_penulis`, `gambar`) VALUES
@@ -85,7 +86,7 @@ INSERT INTO `berita` (`id`, `judul`, `tgl_publish`, `isi`, `id_kategori`, `id_pe
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -94,7 +95,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
@@ -107,7 +108,7 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komentar`
+-- Table structure for table `komentar`
 --
 
 CREATE TABLE `komentar` (
@@ -119,7 +120,7 @@ CREATE TABLE `komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `komentar`
+-- Dumping data for table `komentar`
 --
 
 INSERT INTO `komentar` (`id_komentar`, `nama_pengirim`, `komentar`, `tgl_komentar`, `id_berita`) VALUES
@@ -132,7 +133,7 @@ INSERT INTO `komentar` (`id_komentar`, `nama_pengirim`, `komentar`, `tgl_komenta
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `like`
+-- Table structure for table `like`
 --
 
 CREATE TABLE `like` (
@@ -142,20 +143,21 @@ CREATE TABLE `like` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `like`
+-- Dumping data for table `like`
 --
 
 INSERT INTO `like` (`id_like`, `jumlah_like`, `id_berita`) VALUES
-(1, 3, 8),
-(2, 6, 6),
-(3, 11, 5),
-(4, 1, 7),
-(5, 8, 15);
+(73, 47, 7),
+(74, 24, 5),
+(75, 34, 8),
+(76, 5, 6),
+(77, 1, 17),
+(78, 3, 20);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penulis`
+-- Table structure for table `penulis`
 --
 
 CREATE TABLE `penulis` (
@@ -166,7 +168,7 @@ CREATE TABLE `penulis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `penulis`
+-- Dumping data for table `penulis`
 --
 
 INSERT INTO `penulis` (`id_penulis`, `nama`, `penulis_username`, `penulis_password`) VALUES
@@ -176,18 +178,40 @@ INSERT INTO `penulis` (`id_penulis`, `nama`, `penulis_username`, `penulis_passwo
 (4, 'Fadlan Fauzi', 'fadlan', '$2y$10$i0a7Ge8Vjn6gey5P/w/jieB6w9z4OIX7qTapTDyyVMP6KE0mCkbya'),
 (5, 'Ahmad Doni', 'ahmad', '$2y$10$/CuxPKQ6o.t3qoJ6yWs9UeXE96ylqZiPiIqFjqvZbDIqCyi77mlri');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `nama_user` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`) VALUES
+(1, 'elsanti', '$2y$10$tz3poTkWTe4aqVtHj7c96eDWOb5TfbbQWyD14y7KiZEoy9tST6fQi', 'Elsanti Rosvina'),
+(2, 'elnavi', '$2y$10$y15/11ohdluju7.HxQvFHuKVRnn4sqrmRsZo3p3ATOAIXRAUZqQOW', 'Elnavi Rosanti'),
+(4, 'klaudia', '$2y$10$4DYWlTf2zUDSaycB0xqnWObBmggNIyOmqV5cJBPiLPgKc5WQYY6UC', 'Klaudia Sarto');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `berita`
+-- Indexes for table `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id`),
@@ -195,90 +219,102 @@ ALTER TABLE `berita`
   ADD KEY `id_penulis` (`id_penulis`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `komentar`
+-- Indexes for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD PRIMARY KEY (`id_komentar`),
   ADD KEY `id_berita` (`id_berita`);
 
 --
--- Indeks untuk tabel `like`
+-- Indexes for table `like`
 --
 ALTER TABLE `like`
   ADD PRIMARY KEY (`id_like`),
   ADD KEY `id_berita` (`id_berita`);
 
 --
--- Indeks untuk tabel `penulis`
+-- Indexes for table `penulis`
 --
 ALTER TABLE `penulis`
   ADD PRIMARY KEY (`id_penulis`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `berita`
+-- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `komentar`
+-- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
   MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `like`
+-- AUTO_INCREMENT for table `like`
 --
 ALTER TABLE `like`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT untuk tabel `penulis`
+-- AUTO_INCREMENT for table `penulis`
 --
 ALTER TABLE `penulis`
   MODIFY `id_penulis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `berita`
+-- Constraints for table `berita`
 --
 ALTER TABLE `berita`
   ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `berita_ibfk_2` FOREIGN KEY (`id_penulis`) REFERENCES `penulis` (`id_penulis`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `komentar`
+-- Constraints for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_berita`) REFERENCES `berita` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `like`
+-- Constraints for table `like`
 --
 ALTER TABLE `like`
   ADD CONSTRAINT `like_ibfk_1` FOREIGN KEY (`id_berita`) REFERENCES `berita` (`id`);

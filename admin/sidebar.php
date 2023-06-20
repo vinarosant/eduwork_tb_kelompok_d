@@ -97,6 +97,22 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="user.php" class="nav-link <?php if ($halaman == "Data User") {
+                                                echo "active";
+                                              } ?>">
+            <i class="nav-icon 	fas fa-user-cog"></i>
+            <p>
+              Data User
+              <i class="right fas fa-angle-<?php if ($halaman == "Data User") {
+                                              echo "right";
+                                            } else {
+                                              echo "left";
+                                            } ?>"></i>
+            </p>
+          </a>
+        </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

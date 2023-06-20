@@ -89,6 +89,9 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                     </ul>
                                 </div>
                             </div>
+                            <?php 
+                            if(!empty(isset($_SESSION['id_user']))){
+                            ?>
                             <div class="socail-share pt-30">
                                 <div class="section-tittle">
                                     <ul>
@@ -104,19 +107,34 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                                         echo "0" ;
                                                     }
                                                 ?>
-                                            </span> Suka
+                                            </span> Suka 
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-
+                        <?php } ?>
+                        <?php if(!empty($_SESSION['id_berita'])){
+                            $oldberita = $_SESSION['id_berita'];
+                        } ?>
                             <script>
+                                <?php if(!empty($oldberita)){ ?>
+                                var old = <?php echo $oldberita ?>;
+                                <?php }else{ ?>
+                                var old = "";
+                                <?php } ?>
+                                var count = 0;
+                               
                                 function addLike(id_berita) {
                                     event.preventDefault();
-
+                                    
                                     var xhr = new XMLHttpRequest();
                                     var url = "addlike.php?id=" + id_berita;
-                                    xhr.open("GET", url, true);
+                                    var id = id_berita;
+                                    if(count<=0 && id!=old){
+                                        xhr.open("GET", url, true);
+                                        count++;
+                                    }
+                                   
 
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -125,6 +143,7 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                                 var heartIcon = document.getElementById("heartIcon");
                                                 heartIcon.style.color = "red";
                                                 updateLikeCount(id_berita); 
+                                                count++;
                                             } else {
                                                 console.log("Gagal menambahkan suka");
                                             }
