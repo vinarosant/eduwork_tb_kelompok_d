@@ -78,17 +78,6 @@ $jumlah_like = $data_jumlah_like['jumlah_like'];
                                 echo "<p class='about-pera1 text-justify mb-25'>" . $isi_berita . "</p>";
                                 ?>
                             </div>
-                            <div class="social-share pt-30">
-                                <div class="section-tittle">
-                                    <h3 class="mr-20">Share:</h3>
-                                    <ul>
-                                        <li><a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                            </div>
                             <?php 
                             if(!empty(isset($_SESSION['id_user']))){
                             ?>
