@@ -102,11 +102,6 @@ if (isset($_GET['id_user'])) {
                 }
               }
               ?>
-              <div class="row no-print">
-                <div class="col-12">
-                  <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#inputuser"><i class="far fa-plus-square"></i> Tambah Data</a>
-                </div>
-              </div>
               <br>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
