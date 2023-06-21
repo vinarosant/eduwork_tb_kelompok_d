@@ -232,7 +232,7 @@ if (isset($_GET['id'])) {
                       <td><?= $d['kategori']; ?></td>
                       <td><?= $d['nama']; ?></td>
                       <td>
-                        <a href="" data-toggle="modal" data-target="#editberita<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
+                        
                         <a href="" data-toggle="modal" data-target="#deleteberita<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
@@ -283,7 +283,7 @@ if (isset($_GET['id'])) {
                             <form method="post" action="#" enctype="multipart/form-data">
                               <?php
                               $id = $d['id'];
-                              $query = "SELECT * FROM berita WHERE id='$id'";
+                              $query = "SELECT * FROM berita JOIN `like` ON berita.id = `like`.`id_berita` WHERE berita.id='$id'";
                               $result = mysqli_query($koneksi, $query);
                               while ($row = mysqli_fetch_assoc($result)) {
                               ?>
@@ -305,7 +305,9 @@ if (isset($_GET['id'])) {
                                   </div>
                                   <div class="form-group">
                                     <label for="Jumlah Like">Jumlah Like</label>
+                                    
                                     <input type="text" class="form-control" value="<?= $row['jumlah_like']; ?>" name="jumlah_like" required>
+                                    
                                   </div>
                                   <div class="form-group">
                                     <label for="Tanggal">Tanggal</label>
