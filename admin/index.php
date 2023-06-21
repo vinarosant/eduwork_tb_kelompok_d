@@ -232,7 +232,7 @@ if (isset($_GET['id'])) {
                       <td><?= $d['kategori']; ?></td>
                       <td><?= $d['nama']; ?></td>
                       <td>
-                        
+                      <a href="" data-toggle="modal" data-target="#editberita<?php echo $no; ?>" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-edit"></i> Edit</a>
                         <a href="" data-toggle="modal" data-target="#deleteberita<?php echo $no; ?>" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> Hapus</a>
                       </td>
                     </tr>
@@ -306,7 +306,7 @@ if (isset($_GET['id'])) {
                                   <div class="form-group">
                                     <label for="Jumlah Like">Jumlah Like</label>
                                     
-                                    <input type="text" class="form-control" value="<?= $row['jumlah_like']; ?>" name="jumlah_like" required>
+                                    <input type="text" class="form-control" value="<?= $row['jumlah_like']; ?>" name="jumlah_like" readonly>
                                     
                                   </div>
                                   <div class="form-group">
